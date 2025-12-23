@@ -21,6 +21,9 @@ urlpatterns = [
     # 회원탈퇴
     path('delete/', delete_account, name='delete_account'),
 
+    # 프로필
+    path('profile/', views.profile_view, name='profile'),
+
     # 현재 사용자 정보 조회
     path('me/', get_user_info, name='user_info'),
 ]

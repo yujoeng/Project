@@ -2,13 +2,11 @@ import { handleApiError } from '@/utils/errorHandler'
 
 <script setup>
 import { ref } from 'vue'
-import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
 
 const authStore = useAuthStore()
 const router = useRouter()
-
 
 const username = ref('')
 const password1 = ref('')
@@ -16,38 +14,27 @@ const password2 = ref('')
 const errorMessage = ref('')
 const successMessage = ref('')
 
-
-const usernameError = ref('')  // 아이디 오류 메시지
-const password1Error = ref('') // 비밀번호1 오류 메시지
-const password2Error = ref('') // 비밀번호2 오류 메시지
-
 const signup = async () => {
   // 초기화
-  usernameError.value = ''
-  password1Error.value = ''
-  password2Error.value = ''
   errorMessage.value = ''
+  successMessage.value = ''
 
-  // 필드 검증
-  let isValid = true;
-
-  // 빈 값 체크
-  if (!username.value) {
-    usernameError.value = '아이디를 입력해주세요.'
-    isValid = false;
+  // 입력 검증
+  if (!username.value.trim()) {
+    errorMessage.value = '아이디를 입력해주세요.'
+    return
   }
 
   if (!password1.value) {
-    password1Error.value = '비밀번호를 입력해주세요.'
-    isValid = false;
+    errorMessage.value = '비밀번호를 입력해주세요.'
+    return
   }
 
   if (!password2.value) {
-    password2Error.value = '비밀번호 확인을 입력해주세요.'
-    isValid = false;
+    errorMessage.value = '비밀번호 확인을 입력해주세요.'
+    return
   }
 
-  // 비밀번호 일치 여부 확인 
   if (password1.value !== password2.value) {
     errorMessage.value = '비밀번호가 일치하지 않습니다.'
     return
@@ -55,41 +42,44 @@ const signup = async () => {
 
   if (password1.value.length < 8) {
     errorMessage.value = '비밀번호는 최소 8자 이상이어야 합니다.'
-    isValid = false;
-  }
-
-  if (!isValid) {
-    return; // 유효하지 않으면 계속 진행하지 않음
+    return
   }
 
   try {
-    // const res = await axios.post('accounts/signup/', {
-    //   username: username.value,
-    //   password1: password1.value,
-    //   password2: password2.value,
-    // })
-
-    // **authStore에서 signupUser 호출**
     await authStore.signupUser(username.value, password1.value, password2.value)
 
     successMessage.value = '회원가입에 성공했습니다. 로그인 페이지로 이동합니다.'
+    
     setTimeout(() => {
       router.push('/login')
     }, 2000)
   } catch (err) {
-      // ✅ 간결해진 에러 처리
-    errorMessage.value = handleApiError(error)
-    console.error(error)
+    console.error(err)
     
-    // if (err.response && err.response.data.password){
-    //   // 백에서 반환된 비밀번호 관련 에러 메시지 출력
-    //   errorMessage.value = err.response.data.password[0]    
-    // } else if (err.response && err.response.status === 400) {
-    //   errorMessage.value = '이미 가입된 아이디입니다.'
-    // } else {
-    //   errorMessage.value = '회원가입에 실패했습니다. 다시 시도해주세요.'
+    if (err.response) {
+      const data = err.response.data
+      
+      // 백엔드 에러 메시지 우선
+      if (data.password) {
+        errorMessage.value = data.password[0]
+      } else if (data.password2) {
+        errorMessage.value = data.password2[0]
+      } else if (data.username) {
+        errorMessage.value = data.username[0]
+      } else if (data.detail) {
+        errorMessage.value = data.detail
+      } else if (err.response.status === 400) {
+        errorMessage.value = '이미 가입된 아이디입니다.'
+      } else {
+        errorMessage.value = '회원가입에 실패했습니다.'
+      }
+    } else if (err.request) {
+      errorMessage.value = '서버에 연결할 수 없습니다.'
+    } else {
+      errorMessage.value = '회원가입 처리 중 오류가 발생했습니다.'
     }
   }
+}
 </script>
 
 <template>

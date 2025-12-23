@@ -16,25 +16,44 @@ const errorMessage = ref('')
 
 // 로그인 처리 함수 
 const login = async () => {
-  errorMessage.value = '' // 에러 메시지 초기화 
+  errorMessage.value = ''
+
+  // 입력 검증
+  if (!username.value.trim()) {
+    errorMessage.value = '아이디를 입력해주세요.'
+    return
+  }
+
+  if (!password.value.trim()) {
+    errorMessage.value = '비밀번호를 입력해주세요.'
+    return
+  }
 
   try {
     await authStore.loginUser(username.value, password.value)
-
-    // 로그인 성공 후 이동
     router.push('/')
   } catch (err) {
-    errorMessage.value = handleApiError(error)
     console.error(err)
 
-    // // 비밀번호 오류 시 
-    // if (err.response && err. response.status === 401) {
-    //   errorMessage.value = '가입되지 않은 계정이거나 비밀번호가 틀렸습니다.'
-    // } else {
-    //   // 그 외 오류 발생 시
-    //   errorMessage.value = authStore.errorMessage || '로그인에 실패했습니다.'
+    // 구체적인 에러 처리 
+    if (err.response) {
+      const status = err.response.status
+      const data = err.response.data
+
+      if (status === 401) {
+        errorMessage.value = '가입되지 않은 계정이거나 비밀번호가 틀렸습니다.'
+      } else if (status === 400) {
+        errorMessage.value = data.detail || '입력 정보를 확인해주세요.'
+      } else {
+        errorMessage.value = '로그인에 실패했습니다.'
+      }
+    } else if (err.request) {
+      errorMessage.value = '서버에 연결할 수 없습니다.'
+    } else {
+      errorMessage.value = '로그인 처리 중 오류가 발생했습니다.'
     }
   }
+}
 </script>
 
 <template>

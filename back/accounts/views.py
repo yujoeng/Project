@@ -11,7 +11,11 @@ from django.contrib.auth import authenticate, logout
 
 
 from .serializers import SignupSerializer
-from .serializers import PasswordChangeSerializer
+from .serializers import (
+    PasswordChangeSerializer,
+    UserProfileSerializer,
+    UserProfileUpdateSerializer,
+)
 
 # 회원가입 
 @api_view(['POST'])
@@ -79,13 +83,37 @@ def delete_account(request):
 
     return Response({"message": "탈퇴가 완료되었습니다."}, status=status.HTTP_200_OK)
 
-
+# 사용자 정보 조회 (기존 get_user_info와 기능 통합)
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_user_info(request):
-    """현재 로그인한 사용자 정보 반환"""
+    """현재 로그인한 사용자 정보 반환 (간단한 버전)"""
     user = request.user
     return Response({
         'username': user.username,
         'id': user.id,
+        'nickname': user.nickname,
     }, status=status.HTTP_200_OK)
+
+
+# 프로필 조회 및 수정
+@api_view(['GET', 'PUT', 'PATCH'])
+@permission_classes([IsAuthenticated])
+def profile_view(request):
+    """
+    GET: 프로필 조회
+    PUT/PATCH: 프로필 수정
+    """
+    user = request.user
+    
+    if request.method == 'GET':
+        serializer = UserProfileSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    elif request.method in ['PUT', 'PATCH']:
+        serializer = UserProfileUpdateSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

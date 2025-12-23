@@ -48,3 +48,42 @@ class PasswordChangeSerializer(serializers.Serializer):
         user.set_password(self.validated_data['new_password'])
         user.save()
         return user
+    
+# 프로필 조회
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'id', 
+            'username', 
+            'nickname',
+            'favorite_genres',
+            'favorite_actors',
+            'preferred_countries',
+            'profile_image',
+            'created_at',
+        )
+        read_only_fields = ('id', 'username', 'created_at')
+
+# 프로필 수정용 Serializer
+class UserProfileUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = (
+            'nickname',
+            'favorite_genres',
+            'favorite_actors',
+            'preferred_countries',
+            'profile_image',
+        )
+
+    def validate_favorite_genres(self, value):
+        # 장르 목록 검증 (선택사항)
+        allowed_genres = [
+            '액션', '코미디', '드라마', '스릴러', '공포', 
+            'SF', '판타지', '로맨스', '애니메이션', '다큐멘터리'
+        ]
+        for genre in value:
+            if genre not in allowed_genres:
+                raise serializers.ValidationError(f"'{genre}'는 허용되지 않은 장르입니다.")
+        return value
