@@ -2,7 +2,9 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
-import axios from 'axios'
+import { handleApiError } from '@/utils/errorHandler'
+
+// import axios from 'axios'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -17,29 +19,22 @@ const login = async () => {
   errorMessage.value = '' // 에러 메시지 초기화 
 
   try {
-    // const res = await axios.post('accounts/login/', {
-      // username: username.value,
-      // password: password.value,
-    // })
     await authStore.loginUser(username.value, password.value)
-
-    // // Pinia에 토큰 저장
-    // authStore.setToken(res.data.access)
 
     // 로그인 성공 후 이동
     router.push('/')
   } catch (err) {
+    errorMessage.value = handleApiError(error)
     console.error(err)
 
-    // 비밀번호 오류 시 
-    if (err.response && err. response.status === 401) {
-      errorMessage.value = '가입되지 않은 계정이거나 비밀번호가 틀렸습니다.'
-    } else {
-      // 그 외 오류 발생 시
-      errorMessage.value = authStore.errorMessage || '로그인에 실패했습니다.'
+    // // 비밀번호 오류 시 
+    // if (err.response && err. response.status === 401) {
+    //   errorMessage.value = '가입되지 않은 계정이거나 비밀번호가 틀렸습니다.'
+    // } else {
+    //   // 그 외 오류 발생 시
+    //   errorMessage.value = authStore.errorMessage || '로그인에 실패했습니다.'
     }
   }
-}
 </script>
 
 <template>

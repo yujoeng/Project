@@ -1,3 +1,5 @@
+import { handleApiError } from '@/utils/errorHandler'
+
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
@@ -75,17 +77,19 @@ const signup = async () => {
       router.push('/login')
     }, 2000)
   } catch (err) {
-    console.error(err)
-    if (err.response && err.response.data.password){
-      // 백에서 반환된 비밀번호 관련 에러 메시지 출력
-      errorMessage.value = err.response.data.password[0]    
-    } else if (err.response && err.response.status === 400) {
-      errorMessage.value = '이미 가입된 아이디입니다.'
-    } else {
-      errorMessage.value = '회원가입에 실패했습니다. 다시 시도해주세요.'
+      // ✅ 간결해진 에러 처리
+    errorMessage.value = handleApiError(error)
+    console.error(error)
+    
+    // if (err.response && err.response.data.password){
+    //   // 백에서 반환된 비밀번호 관련 에러 메시지 출력
+    //   errorMessage.value = err.response.data.password[0]    
+    // } else if (err.response && err.response.status === 400) {
+    //   errorMessage.value = '이미 가입된 아이디입니다.'
+    // } else {
+    //   errorMessage.value = '회원가입에 실패했습니다. 다시 시도해주세요.'
     }
   }
-}
 </script>
 
 <template>

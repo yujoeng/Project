@@ -35,8 +35,6 @@ export async function searchReviewVideos(query) {
       maxResults: 8,
       q: query, 
     },
-
   })
-
   return res.data.items   
 }
