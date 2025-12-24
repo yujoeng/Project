@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
 import apiClient from '@/api/axios'
+import axios from 'axios'
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -29,6 +30,19 @@ const isEditing = ref(false)
 const showPasswordChange = ref(false)
 const message = ref('')
 const errorMessage = ref('')
+
+// 내 활동 데이터
+const myReviews = ref([])
+const myComments = ref([])
+const isLoadingActivity = ref(false)
+
+// 찜한 영화 데이터
+const favoriteMovies = ref([])
+const favoriteMoviesDetails = ref([])
+const isLoadingFavorites = ref(false)
+
+const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY
+const TMDB_BASE_URL = 'https://api.themoviedb.org/3'
 
 // 장르 목록
 const genreOptions = [
@@ -172,8 +186,80 @@ const toggleCountry = (country) => {
   }
 }
 
-onMounted(() => {
-  fetchProfile()
+// 내가 작성한 리뷰 조회
+const fetchMyReviews = async () => {
+  try {
+    isLoadingActivity.value = true
+    const response = await apiClient.get('/accounts/my-reviews/')
+    myReviews.value = response.data
+  } catch (error) {
+    console.error('리뷰 조회 실패:', error)
+  } finally {
+    isLoadingActivity.value = false
+  }
+}
+
+// 내가 작성한 댓글 조회
+const fetchMyComments = async () => {
+  try {
+    const response = await apiClient.get('/accounts/my-comments/')
+    myComments.value = response.data
+  } catch (error) {
+    console.error('댓글 조회 실패:', error)
+  }
+}
+
+// 영화 상세 페이지로 이동
+const goToMovie = (movieId) => {
+  router.push(`/movies/${movieId}`)
+}
+
+// 찜한 영화 목록 조회
+const fetchFavoriteMovies = async () => {
+  try {
+    isLoadingFavorites.value = true
+    const response = await apiClient.get('/accounts/favorite-movies/')
+    favoriteMovies.value = response.data.favorite_movies || []
+
+    // 찜한 영화가 있으면 TMDB에서 상세 정보 가져오기
+    if (favoriteMovies.value.length > 0) {
+      await fetchFavoriteMoviesDetails()
+    }
+  } catch (error) {
+    console.error('찜한 영화 조회 실패:', error)
+  } finally {
+    isLoadingFavorites.value = false
+  }
+}
+
+// 찜한 영화 상세 정보 가져오기 (TMDB)
+const fetchFavoriteMoviesDetails = async () => {
+  try {
+    const promises = favoriteMovies.value.map(async (movieId) => {
+      try {
+        const response = await axios.get(`${TMDB_BASE_URL}/movie/${movieId}`, {
+          params: {
+            api_key: TMDB_API_KEY,
+            language: 'ko-KR'
+          }
+        })
+        return response.data
+      } catch (error) {
+        console.error(`영화 ${movieId} 정보 조회 실패:`, error)
+        return null
+      }
+    })
+
+    const results = await Promise.all(promises)
+    favoriteMoviesDetails.value = results.filter(movie => movie !== null)
+  } catch (error) {
+    console.error('찜한 영화 상세 정보 조회 실패:', error)
+  }
+}
+
+onMounted(async () => {
+  await fetchProfile()
+  await Promise.all([fetchMyReviews(), fetchMyComments(), fetchFavoriteMovies()])
 })
 </script>
 
@@ -287,6 +373,139 @@ onMounted(() => {
       </div>
     </div>
 
+    <!-- 찜한 영화 -->
+    <div class="profile-section">
+      <h2>찜한 영화 ({{ favoriteMoviesDetails.length }})</h2>
+
+      <!-- 로딩 -->
+      <div v-if="isLoadingFavorites" class="activity-loading">
+        <div class="loading-spinner"></div>
+        <p>찜한 영화를 불러오는 중...</p>
+      </div>
+
+      <!-- 빈 상태 -->
+      <div v-else-if="favoriteMoviesDetails.length === 0" class="empty-activity">
+        <p>아직 찜한 영화가 없습니다.</p>
+        <button @click="router.push('/movies')" class="btn-secondary" style="margin-top: 16px;">
+          영화 둘러보기
+        </button>
+      </div>
+
+      <!-- 찜한 영화 그리드 -->
+      <div v-else class="favorite-movies-grid">
+        <div
+          v-for="movie in favoriteMoviesDetails"
+          :key="movie.id"
+          class="favorite-movie-card"
+          @click="goToMovie(movie.id)"
+        >
+          <div class="favorite-movie-poster">
+            <img
+              v-if="movie.poster_path"
+              :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
+              :alt="movie.title"
+            />
+            <div v-else class="no-poster">🎬</div>
+          </div>
+          <div class="favorite-movie-info">
+            <h4 class="favorite-movie-title">{{ movie.title }}</h4>
+            <div class="favorite-movie-meta">
+              <span class="favorite-rating">⭐ {{ movie.vote_average?.toFixed(1) }}</span>
+              <span class="favorite-year">{{ movie.release_date?.split('-')[0] }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 내 활동 -->
+    <div class="profile-section">
+      <h2>내 활동</h2>
+
+      <!-- 로딩 -->
+      <div v-if="isLoadingActivity" class="activity-loading">
+        <div class="loading-spinner"></div>
+        <p>활동 내역을 불러오는 중...</p>
+      </div>
+
+      <div v-else class="activity-container">
+        <!-- 내가 작성한 리뷰 -->
+        <div class="activity-section">
+          <h3 class="activity-title">
+            <span class="activity-icon">✍️</span>
+            작성한 리뷰 ({{ myReviews.length }})
+          </h3>
+
+          <div v-if="myReviews.length === 0" class="empty-activity">
+            <p>아직 작성한 리뷰가 없습니다.</p>
+          </div>
+
+          <div v-else class="activity-list">
+            <div
+              v-for="review in myReviews.slice(0, 5)"
+              :key="review.id"
+              class="activity-item"
+              @click="goToMovie(review.movie_id)"
+            >
+              <div class="activity-header">
+                <h4 class="activity-item-title">{{ review.title }}</h4>
+                <span class="activity-rating">⭐ {{ review.rating }}</span>
+              </div>
+              <p class="activity-content">{{ review.content }}</p>
+              <div class="activity-meta">
+                <span class="activity-date">{{ new Date(review.created_at).toLocaleDateString() }}</span>
+                <div class="activity-stats">
+                  <span>❤️ {{ review.like_count }}</span>
+                  <span>💬 {{ review.comment_count }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            v-if="myReviews.length > 5"
+            class="btn-show-more"
+            @click="router.push('/review-search')"
+          >
+            모든 리뷰 보기 ({{ myReviews.length }}개)
+          </button>
+        </div>
+
+        <!-- 내가 작성한 댓글 -->
+        <div class="activity-section">
+          <h3 class="activity-title">
+            <span class="activity-icon">💬</span>
+            작성한 댓글 ({{ myComments.length }})
+          </h3>
+
+          <div v-if="myComments.length === 0" class="empty-activity">
+            <p>아직 작성한 댓글이 없습니다.</p>
+          </div>
+
+          <div v-else class="activity-list">
+            <div
+              v-for="comment in myComments.slice(0, 5)"
+              :key="comment.id"
+              class="activity-item comment-item"
+            >
+              <p class="activity-content">{{ comment.content }}</p>
+              <div class="activity-meta">
+                <span class="activity-date">{{ new Date(comment.created_at).toLocaleDateString() }}</span>
+              </div>
+            </div>
+          </div>
+
+          <button
+            v-if="myComments.length > 5"
+            class="btn-show-more"
+            @click="router.push('/review-search')"
+          >
+            모든 댓글 보기 ({{ myComments.length }}개)
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- 비밀번호 변경 -->
     <div class="profile-section">
       <h2>비밀번호 변경</h2>
@@ -341,7 +560,8 @@ onMounted(() => {
 
 h1 {
   margin-bottom: 30px;
-  color: #111827;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 10px rgba(183, 148, 246, 0.3);
 }
 
 .success-message {
@@ -361,17 +581,19 @@ h1 {
 }
 
 .profile-section {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #8b5fc7 0%, #6b4a8f 50%, #4a2d5e 100%);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 12px;
   padding: 24px;
   margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(123, 16, 173, 0.2);
 }
 
 .profile-section h2 {
   font-size: 18px;
   margin-bottom: 20px;
-  color: #374151;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 600;
 }
 
 .info-row {
@@ -383,18 +605,24 @@ h1 {
 .info-row label {
   width: 120px;
   font-weight: 600;
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .info-row span {
-  color: #111827;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .info-row input {
   flex: 1;
   padding: 8px 12px;
-  border: 1px solid #d1d5db;
+  border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.info-row input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .preference-group {
@@ -404,19 +632,25 @@ h1 {
 .preference-group label {
   display: block;
   font-weight: 600;
-  color: #374151;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 12px;
 }
 
 .preference-group input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #d1d5db;
+  border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.preference-group input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .preference-group span {
-  color: #6b7280;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .genre-grid,
@@ -429,24 +663,27 @@ h1 {
 .genre-btn,
 .country-btn {
   padding: 8px 16px;
-  border: 2px solid #e5e7eb;
-  background: white;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s;
   font-size: 14px;
 }
 
 .genre-btn:hover,
 .country-btn:hover {
-  border-color: #7b10adff;
+  border-color: #d4af37;
+  background: rgba(212, 175, 55, 0.2);
 }
 
 .genre-btn.active,
 .country-btn.active {
-  background: #7b10adff;
-  color: white;
-  border-color: #7b10adff;
+  background: linear-gradient(135deg, #d4af37, #f4d03f);
+  color: #1a0d2e;
+  border-color: #d4af37;
+  font-weight: 600;
 }
 
 .genre-tags,
@@ -459,14 +696,15 @@ h1 {
 .tag {
   display: inline-block;
   padding: 6px 12px;
-  background: #f3f4f6;
+  background: rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.4);
   border-radius: 16px;
   font-size: 14px;
-  color: #374151;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .empty {
-  color: #9ca3af;
+  color: rgba(255, 255, 255, 0.5);
   font-style: italic;
 }
 
@@ -478,29 +716,34 @@ h1 {
 
 .btn-primary {
   padding: 10px 20px;
-  background: #7b10adff;
-  color: white;
-  border: none;
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+  transition: all 0.3s;
 }
 
 .btn-primary:hover {
-  background: #6a0e96;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
   padding: 10px 20px;
-  background: white;
-  color: #374151;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
   cursor: pointer;
+  transition: all 0.3s;
 }
 
 .btn-secondary:hover {
-  background: #f9fafb;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .password-change-form {
@@ -511,35 +754,316 @@ h1 {
 
 .password-change-form input {
   padding: 10px 12px;
-  border: 1px solid #d1d5db;
+  border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.password-change-form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .danger-zone {
-  border-color: #fecaca;
-  background: #fef2f2;
+  border-color: rgba(220, 38, 38, 0.3);
+  background: linear-gradient(135deg, #4a2d5e 0%, #2d1b3d 100%);
+  padding: 16px;
+  margin-top: 40px;
 }
 
 .danger-zone h2 {
-  color: #dc2626;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  margin-bottom: 8px;
 }
 
 .danger-zone p {
-  color: #991b1b;
-  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 12px;
+  font-size: 12px;
 }
 
 .btn-danger {
-  padding: 10px 20px;
-  background: #dc2626;
-  color: white;
-  border: none;
+  padding: 6px 16px;
+  background: rgba(220, 38, 38, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(220, 38, 38, 0.4);
   border-radius: 6px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 500;
+  font-size: 13px;
+  transition: all 0.3s;
 }
 
 .btn-danger:hover {
-  background: #b91c1c;
+  background: rgba(220, 38, 38, 0.3);
+  border-color: rgba(220, 38, 38, 0.6);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* 내 활동 섹션 */
+.activity-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 16px;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(183, 148, 246, 0.2);
+  border-top-color: #b794f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.activity-loading p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.activity-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.activity-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+}
+
+.activity-section:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.activity-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.activity-icon {
+  font-size: 18px;
+}
+
+.empty-activity {
+  text-align: center;
+  padding: 30px 20px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.activity-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.activity-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(183, 148, 246, 0.4);
+  transform: translateX(4px);
+}
+
+.comment-item {
+  cursor: default;
+}
+
+.comment-item:hover {
+  transform: none;
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+
+.activity-item-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  flex: 1;
+  margin: 0;
+}
+
+.activity-rating {
+  color: #fbbf24;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.activity-content {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.activity-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.activity-date {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.activity-stats {
+  display: flex;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.activity-stats span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-show-more {
+  padding: 8px 16px;
+  background: rgba(183, 148, 246, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(183, 148, 246, 0.3);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.btn-show-more:hover {
+  background: rgba(183, 148, 246, 0.25);
+  border-color: rgba(183, 148, 246, 0.5);
+}
+
+/* 찜한 영화 그리드 */
+.favorite-movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.favorite-movie-card {
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+}
+
+.favorite-movie-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(183, 148, 246, 0.3);
+  border-color: rgba(183, 148, 246, 0.5);
+}
+
+.favorite-movie-poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.favorite-movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.favorite-movie-card:hover .favorite-movie-poster img {
+  transform: scale(1.05);
+}
+
+.no-poster {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.favorite-movie-info {
+  padding: 12px;
+}
+
+.favorite-movie-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 8px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+}
+
+.favorite-movie-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.favorite-rating {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.favorite-year {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 768px) {
+  .favorite-movies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+  }
+
+  .favorite-movie-title {
+    font-size: 0.8rem;
+  }
 }
 </style>

@@ -29,7 +29,7 @@ const emotions = [
     color: '#3498DB',
     gradient: 'linear-gradient(135deg, #3498DB, #2C3E50)',
     shadowColor: 'rgba(52, 152, 219, 0.5)',
-    genreIds: [18],
+    genreIds: [18, 99],
     genres: ['드라마'],
     description: '위로가 필요하고 감성적인 기분일 때',
     tagline: '빗소리와 함께 펑펑 울고 싶다면'  // // 디버깅용 추가
@@ -99,7 +99,7 @@ const emotions = [
     color: '#34495E',
     gradient: 'linear-gradient(135deg, #34495E, #2C3E50)',
     shadowColor: 'rgba(52, 73, 94, 0.5)',
-    genreIds: [18],
+    genreIds: [18, 36],
     genres: ['드라마'],
     description: '감상적이고 깊이 있는 영화가 보고 싶을 때',
     tagline: '혼자만의 시간에 잠기고 싶을 때'  // // 디버깅용 추가

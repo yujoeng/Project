@@ -44,7 +44,7 @@ const createShootingStars = () => {
     div.style.setProperty('--delay', star.delay)
     div.style.setProperty('--duration', star.duration)
     div.style.setProperty('--top', star.top)
-    div.style.setProperty('--rigrt', star.right)
+    div.style.setProperty('--left', star.left)
     shootingStarsContainer.appendChild(div)
   })
 
@@ -72,7 +72,6 @@ const createShootingStars = () => {
       <div class="nav-inner">
         <!-- 로고 -->
         <RouterLink to="/" class="logo">
-          <span class="logo-icon">🎭</span>
           <span class="logo-text">
             <span class="logo-cine">CINE</span><span class="logo-motion">motion</span>
           </span>
@@ -81,41 +80,35 @@ const createShootingStars = () => {
         <!-- 메뉴 -->
         <nav class="nav-links">
           <RouterLink to="/" class="nav-link">
-            <span class="nav-icon">🏠</span>
-            <span>홈</span>
+            홈
           </RouterLink>
 
           <RouterLink to="/movies" class="nav-link">
-            <span class="nav-icon">🎬</span>
-            <span>영화 목록</span>
+            전체 영화
           </RouterLink>
 
           <RouterLink to="/emotions" class="nav-link">
-            <span class="nav-icon">🎭</span>
-            <span>감정 기반 영화 추천</span>
+            감정 카드
           </RouterLink>
 
-          <RouterLink to="/review-search" class="nav-link">
-            <span class="nav-icon">🔍</span>
-            <span>검색</span>
+          <RouterLink to="/search" class="nav-link">
+            검색
           </RouterLink>
 
-          <RouterLink 
-            v-if="authStore.isLogin" 
-            to="/recommended" 
+          <RouterLink
+            v-if="authStore.isLogin"
+            to="/recommended"
             class="nav-link"
           >
-            <span class="nav-icon">⭐</span>
-            <span>추천 영화</span>
+            추천 영화
           </RouterLink>
 
-          <RouterLink 
-            v-if="authStore.isLogin" 
-            to="/profile" 
+          <RouterLink
+            v-if="authStore.isLogin"
+            to="/profile"
             class="nav-link"
           >
-            <span class="nav-icon">👤</span>
-            <span>프로필</span>
+            프로필
           </RouterLink>
 
           <!-- 로그인/로그아웃 -->
@@ -137,22 +130,30 @@ const createShootingStars = () => {
 
     <!-- 메인 컨텐츠 -->
     <main class="main-container">
-      <RouterView />
+      <div class="main-inner">
+        <RouterView />
+      </div>
     </main>
 
     <!-- 푸터 -->
     <footer class="footer">
-      <p>&copy; 2024 CINEmotion. 당신의 감정에 맞는 영화를 찾아드립니다.</p>
+      <div class="footer-inner">
+        <p>&copy; 2025 CINEmotion. 당신의 감정에 맞는 영화를 찾아드립니다.</p>
+      </div>
     </footer>
   </div>
 </template>
 
 <style scoped>
 .app-container {
-  min-height: 100vh;
+  /* 화면 높이 고정 */
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   position: relative;
+
+  /* 가로 오버플로우 방지(우측 흰 영역 예방) */
+  overflow-x: hidden;
 }
 
 /* 네비게이션 */
@@ -165,16 +166,18 @@ const createShootingStars = () => {
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(183, 148, 246, 0.2);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  flex: 0 0 auto;
 }
 
 .nav-inner {
-  max-width: 1920px;
-  width: 100%; 
-  margin: 0 auto;
-  padding: 16px 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  padding: 16px 40px;
+  margin: 0 auto;
 }
 
 @media (min-width: 1920px) {
@@ -192,11 +195,11 @@ const createShootingStars = () => {
   .nav-inner {
     padding: 20px 80px; /* 더 큰 패딩 */
   }
-  
+
   .logo-text {
     font-size: 2.25rem;
   }
-  
+
   .logo-icon {
     font-size: 2.5rem;
   }
@@ -226,21 +229,23 @@ const createShootingStars = () => {
   letter-spacing: -0.02em;
 }
 
-/* // 디버깅용 로고 그라디언트 */
+/* 로고 그라디언트 - 금색+보라색 */
 .logo-cine {
-  background: linear-gradient(135deg, #ffffff, #b794f6);
+  background: linear-gradient(135deg, #d4af37, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
 }
 
 .logo-motion {
-  background: linear-gradient(135deg, #d946ef, #7b10ad);
+  background: linear-gradient(135deg, #b794f6, #7b10ad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   font-weight: 300;
   font-style: italic;
+  filter: drop-shadow(0 0 8px rgba(183, 148, 246, 0.4));
 }
 
 /* 네비게이션 링크 */
@@ -301,10 +306,21 @@ const createShootingStars = () => {
 
 /* 메인 컨텐츠 */
 .main-container {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   width: 100%;
   position: relative;
   z-index: 10;
+  overflow-x: hidden;
+}
+
+.main-inner {
+  /* 화면별 상하 여백 */
+  height: 100%;
+  min-height: 0;       
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
 }
 
 /* 푸터 */
@@ -313,12 +329,25 @@ const createShootingStars = () => {
   background: rgba(15, 10, 26, 0.8);
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba(183, 148, 246, 0.2);
-  padding: 32px 40px;
+
+  /* 수정: footer는 고정영역 */
+  flex: 0 0 auto;
+
+  /* 수정: container가 가로 폭 담당 */
+  padding: 18px 0;
+
+  position: relative;
+  z-index: 10;
+}
+
+.footer-inner {
   text-align: center;
   color: var(--text-muted);
   font-size: 1rem;
-  position: relative;
-  z-index: 10;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 40px;
+  margin: 0 auto;
 }
 
 /* 반응형 */

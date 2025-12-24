@@ -1,48 +1,70 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
+import axios from 'axios'
 
 const router = useRouter()
 const curtainOpen = ref(false)
 const contentVisible = ref(false)
+const cardsSpread = ref(false)
+const popularMovies = ref([])
 
-onMounted(() => {
-  // 0.5초 후 커튼 열기 시작
+const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY
+const TMDB_BASE_URL = 'https://api.themoviedb.org/3'
+
+onMounted(async () => {
+  // 인기 영화 먼저 가져오기
+  await fetchPopularMovies()
+
+  // 커튼 애니메이션
   setTimeout(() => {
     curtainOpen.value = true
   }, 500)
 
-  // 2초 후 컨텐츠 페이드인
   setTimeout(() => {
     contentVisible.value = true
   }, 2000)
+
+  // 카드 펼쳐지는 애니메이션
+  setTimeout(() => {
+    cardsSpread.value = true
+  }, 2500)
 })
 
-const navigateToEmotionCards = () => {
-  router.push('/emotions')
+const fetchPopularMovies = async () => {
+  try {
+    // 페이지 1, 2를 모두 가져와서 더 많은 영화 표시
+    const [page1, page2] = await Promise.all([
+      axios.get(`${TMDB_BASE_URL}/movie/popular`, {
+        params: { api_key: TMDB_API_KEY, language: 'ko-KR', page: 1 }
+      }),
+      axios.get(`${TMDB_BASE_URL}/movie/popular`, {
+        params: { api_key: TMDB_API_KEY, language: 'ko-KR', page: 2 }
+      })
+    ])
+
+    // 총 40개 중 상위 20개 영화 선택
+    const allMovies = [...page1.data.results, ...page2.data.results]
+    popularMovies.value = allMovies.slice(0, 20)
+  } catch (error) {
+    console.error('인기 영화 로딩 실패:', error)
+  }
 }
 
-const navigateToMovies = () => {
-  router.push('/movies')
+const navigateToMovie = (movieId) => {
+  router.push(`/movies/${movieId}`)
 }
 </script>
 
 <template>
   <div class="home-view">
-    <!-- 커튼 오버레이 (네비게이션도 가림) -->
+    <!-- 커튼 오버레이 -->
     <div class="curtain-overlay" :class="{ open: curtainOpen }">
       <div class="curtain-container">
-        <!-- 왼쪽 커튼 -->
         <div class="curtain curtain-left"></div>
-        
-        <!-- 오른쪽 커튼 -->
         <div class="curtain curtain-right"></div>
-        
-        <!-- 금색 테두리 -->
         <div class="curtain-border curtain-border-left"></div>
         <div class="curtain-border curtain-border-right"></div>
-        
-        <!-- 커튼 술 장식 -->
         <div class="curtain-tassel curtain-tassel-left"></div>
         <div class="curtain-tassel curtain-tassel-right"></div>
       </div>
@@ -50,7 +72,6 @@ const navigateToMovies = () => {
 
     <!-- 배경 효과 -->
     <div class="background-effects">
-      <!-- 보라색 그라디언트 오브 -->
       <div class="gradient-orb orb-1"></div>
       <div class="gradient-orb orb-2"></div>
       <div class="gradient-orb orb-3"></div>
@@ -60,7 +81,6 @@ const navigateToMovies = () => {
     <div class="content-wrapper" :class="{ visible: contentVisible }">
       <!-- 히어로 섹션 -->
       <div class="hero-section">
-        <!-- 로고 -->
         <div class="logo-container">
           <h1 class="logo">
             <span class="logo-cine">CINE</span><span class="logo-motion">motion</span>
@@ -68,59 +88,48 @@ const navigateToMovies = () => {
           <div class="logo-underline"></div>
         </div>
 
-        <!-- 태그라인 -->
-        <p class="tagline">
-          당신의 감정이 영화를 선택합니다
-        </p>
-
-        <!-- 설명 -->
+        <p class="tagline">당신의 감정이 영화를 선택합니다</p>
         <p class="description">
           오늘 기분에 맞는 완벽한 영화를<br>
           AI가 추천해드립니다
         </p>
-
-        <!-- CTA 버튼 -->
-        <div class="cta-buttons">
-          <button @click="navigateToEmotionCards" class="btn-primary-glow">
-            <span class="btn-icon">✨</span>
-            <span class="btn-text">감정으로 영화 찾기</span>
-            <span class="btn-arrow">→</span>
-          </button>
-
-          <button @click="navigateToMovies" class="btn-secondary-outline">
-            <span class="btn-icon">🎬</span>
-            <span class="btn-text">전체 영화 둘러보기</span>
-          </button>
-        </div>
       </div>
 
-      <!-- 특징 카드 -->
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🎭</div>
-          <h3 class="feature-title">7가지 감정 분석</h3>
-          <p class="feature-description">
-            지금 당신의 기분에 딱 맞는 영화
-          </p>
-          <div class="feature-shine"></div>
-        </div>
+      <!-- 타로 카드 섹션 -->
+      <div class="tarot-section">
+        <h2 class="section-title"> 영화 카드를 선택하세요</h2>
 
-        <div class="feature-card">
-          <div class="feature-icon">🎬</div>
-          <h3 class="feature-title">최신 영화 정보</h3>
-          <p class="feature-description">
-            TMDB 기반 실시간 업데이트
-          </p>
-          <div class="feature-shine"></div>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">⭐</div>
-          <h3 class="feature-title">개인화 추천</h3>
-          <p class="feature-description">
-            취향에 맞는 맞춤 추천
-          </p>
-          <div class="feature-shine"></div>
+        <div class="cards-container" :class="{ spread: cardsSpread }">
+          <!-- 영화 포스터 카드들 -->
+          <div
+            v-for="(movie, index) in popularMovies"
+            :key="movie.id"
+            class="tarot-card movie-card"
+            :style="{
+              '--card-index': index,
+              '--total-cards': popularMovies.length
+            }"
+            @click="navigateToMovie(movie.id)"
+          >
+            <div class="card-inner">
+              <!-- 카드 뒷면 (기본적으로 보임) -->
+              <div class="card-back">
+                <div class="card-back-border-outer"></div>
+                <div class="card-back-content">
+                  <div class="card-back-pattern"></div>
+                  <div class="card-back-stars"></div>
+                </div>
+              </div>
+              <!-- 카드 앞면 (hover 시 보임) -->
+              <div class="card-front movie-poster">
+                <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title" />
+                <div class="movie-overlay">
+                  <h4 class="movie-title">{{ movie.title }}</h4>
+                  <div class="movie-rating">⭐ {{ movie.vote_average.toFixed(1) }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -129,16 +138,18 @@ const navigateToMovies = () => {
 
 <style scoped>
 .home-view {
-  min-height: 100vh;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #0a0612 0%, #1a0b2e 50%, #0a0612 100%);
 }
 
-/* ===== 커튼 오버레이 (전체 화면) ===== */
+/* ===== 커튼 오버레이 ===== */
 .curtain-overlay {
   position: fixed;
   top: 0;
@@ -156,14 +167,12 @@ const navigateToMovies = () => {
   pointer-events: none;
 }
 
-/* 커튼 컨테이너 */
 .curtain-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* 커튼 (보라색 벨벳) */
 .curtain {
   position: absolute;
   top: 0;
@@ -180,12 +189,11 @@ const navigateToMovies = () => {
     #2d1b3d 100%
   );
   transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 
+  box-shadow:
     inset 0 0 80px rgba(139, 95, 199, 0.3),
     inset 0 0 50px rgba(0, 0, 0, 0.5);
 }
 
-/* 펄 효과 (벨벳 질감) */
 .curtain::before {
   content: '';
   position: absolute;
@@ -198,54 +206,19 @@ const navigateToMovies = () => {
     transparent,
     transparent 8px,
     rgba(255, 255, 255, 0.05) 8px,
-    rgba(255, 255, 255, 0.05) 10px,
-    transparent 10px,
-    transparent 18px,
-    rgba(139, 95, 199, 0.1) 18px,
-    rgba(139, 95, 199, 0.1) 20px
+    rgba(255, 255, 255, 0.05) 10px
   );
   opacity: 0.6;
 }
 
-/* 빛 반사 효과 */
-.curtain::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(
-      ellipse at 30% 20%,
-      rgba(255, 255, 255, 0.15) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      ellipse at 70% 80%,
-      rgba(139, 95, 199, 0.2) 0%,
-      transparent 50%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      transparent 30%,
-      transparent 70%,
-      rgba(0, 0, 0, 0.3) 100%
-    );
-}
-
 .curtain-left {
   left: 0;
-  transform-origin: left center;
 }
 
 .curtain-right {
   right: 0;
-  transform-origin: right center;
 }
 
-/* 커튼 열림 */
 .curtain-overlay.open .curtain-left {
   transform: translateX(-100%);
 }
@@ -254,7 +227,6 @@ const navigateToMovies = () => {
   transform: translateX(100%);
 }
 
-/* 금색 테두리 */
 .curtain-border {
   position: absolute;
   top: 0;
@@ -268,7 +240,7 @@ const navigateToMovies = () => {
     rgba(212, 175, 55, 0.8) 80%,
     transparent 100%
   );
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(212, 175, 55, 0.6),
     0 0 40px rgba(212, 175, 55, 0.3);
   transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -292,7 +264,6 @@ const navigateToMovies = () => {
   transform: translateX(200%);
 }
 
-/* 커튼 술 장식 (금색) */
 .curtain-tassel {
   position: absolute;
   top: 50%;
@@ -307,23 +278,10 @@ const navigateToMovies = () => {
   );
   border-radius: 15px;
   transform: translateY(-50%);
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(212, 175, 55, 0.6),
     inset 0 0 20px rgba(212, 175, 55, 0.3);
   transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.curtain-tassel::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 60px;
-  background: linear-gradient(180deg, rgba(212, 175, 55, 1), rgba(212, 175, 55, 0.8));
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
 }
 
 .curtain-tassel-left {
@@ -369,7 +327,6 @@ const navigateToMovies = () => {
   background: linear-gradient(135deg, #7b10ad, #d946ef);
   top: -300px;
   left: -300px;
-  animation-delay: 0s;
 }
 
 .orb-2 {
@@ -402,15 +359,20 @@ const navigateToMovies = () => {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1600px;
-  padding: 80px 40px;
+  height: 100%;
+  max-width: 100%;
+  padding: clamp(20px, 6vh, 80px) 40px 32px 40px;
   opacity: 0;
   transform: translateY(30px);
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  
+  /* 수정: space-between 제거 → tarot는 아래로, hero는 조금 내려오게 */
+  justify-content: flex-start;
 }
 
-
-
+/* 지우기 */
 .content-wrapper.visible {
   opacity: 1;
   transform: translateY(0);
@@ -419,32 +381,33 @@ const navigateToMovies = () => {
 /* ===== 히어로 섹션 ===== */
 .hero-section {
   text-align: center;
-  margin-bottom: 80px;
+  margin-top: clamp(10px, 6vh, 90px);
+  margin-bottom: clamp(18px, 4vh, 40px);
+  flex-shrink: 0;
 }
 
-/* 로고 */
+/* logo-container 지우기 */ 
 .logo-container {
-  margin-bottom: 32px;
+  margin-bottom: 30px;
 }
 
 .logo {
-  font-size: 5rem;
-  font-weight: 700;
+  font-size: clamp(2.6rem, 6vw, 6rem);
+  font-weight: 600;
   letter-spacing: -0.02em;
-  margin: 0 0 16px 0;
+  margin: 0 0 12px 0;
   line-height: 1;
 }
 
 .logo-cine {
-  background: linear-gradient(135deg, #ffffff, #d4af37);
+  background: linear-gradient(135deg, #d4af37, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
 }
 
 .logo-motion {
-  background: linear-gradient(135deg, #d946ef, #7b10ad);
+  background: linear-gradient(135deg, #b794f6, #7b10ad);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -453,8 +416,8 @@ const navigateToMovies = () => {
 }
 
 .logo-underline {
-  width: 200px;
-  height: 4px;
+  width: 150px;
+  height: 3px;
   background: linear-gradient(
     90deg,
     transparent,
@@ -463,318 +426,371 @@ const navigateToMovies = () => {
   );
   margin: 0 auto;
   border-radius: 2px;
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
 }
 
-/* 태그라인 */
 .tagline {
-  font-size: 1.75rem;
+  /* font-size: 1.2rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
+  margin-bottom: 8px; */
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
 }
 
 .description {
-  font-size: 1.125rem;
+  /* font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 48px;
-  line-height: 1.8;
+  margin-bottom: 0;
+  line-height: 1.6; */
+  font-size: clamp(0.85rem, 1.1vw, 1.05rem);
 }
 
-/* CTA 버튼 */
-.cta-buttons {
+/* ===== 타로 카드 섹션 ===== */
+.tarot-section {
+  text-align: center;
+  flex: 1;
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 80px;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-.btn-primary-glow {
-  position: relative;
-  padding: 18px 40px;
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: white;
-  background: linear-gradient(135deg, #7b10ad, #d946ef);
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 
-    0 8px 32px rgba(123, 16, 173, 0.4),
-    0 0 0 2px rgba(212, 175, 55, 0.2);
-  overflow: hidden;
-}
-
-.btn-primary-glow::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transition: left 0.5s;
-}
-
-.btn-primary-glow:hover::before {
-  left: 100%;
-}
-
-.btn-primary-glow:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 12px 48px rgba(123, 16, 173, 0.6),
-    0 0 0 3px rgba(212, 175, 55, 0.4);
-}
-
-.btn-secondary-outline {
-  padding: 18px 40px;
-  font-size: 1.125rem;
+.section-title {
+  font-size: 1.5rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.9);
-  background: transparent;
-  border: 2px solid rgba(212, 175, 55, 0.4);
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  backdrop-filter: blur(10px);
-}
-
-.btn-secondary-outline:hover {
-  border-color: rgba(212, 175, 55, 0.8);
-  background: rgba(212, 175, 55, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.3);
-}
-
-/* ===== 특징 그리드 ===== */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
-}
-
-.feature-card {
-  position: relative;
-  background: linear-gradient(135deg, rgba(45, 27, 61, 0.6), rgba(15, 10, 26, 0.8));
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  border-radius: 20px;
-  padding: 40px 32px;
-  text-align: center;
-  transition: all 0.4s ease;
-  backdrop-filter: blur(10px);
-  overflow: hidden;
-}
-
-.feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(183, 148, 246, 0.1) 0%,
-    transparent 50%,
-    rgba(212, 175, 55, 0.1) 100%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.feature-card:hover::before {
-  opacity: 1;
-}
-
-.feature-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(212, 175, 55, 0.5);
-  box-shadow: 
-    0 20px 60px rgba(123, 16, 173, 0.4),
-    0 0 40px rgba(212, 175, 55, 0.2);
-}
-
-.feature-icon {
-  font-size: 3.5rem;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 0 20px rgba(183, 148, 246, 0.6));
-}
-
-.feature-title {
-  font-size: 1.375rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.95);
-  margin-bottom: 12px;
-  background: linear-gradient(135deg, #ffffff, rgba(212, 175, 55, 0.8));
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #d4af37, #b794f6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.feature-description {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.6;
+.cards-container {
+  perspective: 2000px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex: 1;
+  position: relative;
+  padding-bottom: 20px;
+  overflow: hidden;
+  max-width: 100%;
 }
 
-/* 카드 반짝임 효과 */
-.feature-shine {
+/* ===== 타로 카드 스타일 ===== */
+.tarot-card {
+  width: 280px;
+  height: 450px;
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(212, 175, 55, 0.1),
-    transparent
-  );
-  transform: rotate(45deg);
-  transition: all 0.8s ease;
+  cursor: pointer;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition-delay: calc(var(--card-index) * 0.05s);
+  transform-style: preserve-3d;
+
+  /* 하단 일자 겹침 배치 */
+  --card-spacing: 65px;
+  --total-width: calc((var(--total-cards) - 1) * var(--card-spacing));
+  --start-position: calc(-1 * var(--total-width) / 2);
+  --offset-x: calc(var(--start-position) + (var(--card-index) * var(--card-spacing)));
+
+  bottom: 0;
+  left: 50%;
+
+  /* 초기 상태: 모두 중앙에 겹쳐져 있음 */
+  transform: translateX(-50%) translateY(0) rotate(0deg);
+  z-index: var(--card-index);
   opacity: 0;
 }
 
-.feature-card:hover .feature-shine {
+/* 카드 펼쳐진 상태 */
+.cards-container.spread .tarot-card {
+  transform: translateX(calc(var(--offset-x))) translateY(0) rotate(0deg);
   opacity: 1;
-  transform: rotate(45deg) translate(50%, 50%);
+  animation: cardFloat 3s ease-in-out infinite;
+  animation-delay: calc(var(--card-index) * 0.1s + 0.8s);
+}
+
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translateX(calc(var(--offset-x))) translateY(0);
+  }
+  50% {
+    transform: translateX(calc(var(--offset-x))) translateY(-10px);
+  }
+}
+
+.cards-container.spread .tarot-card:hover {
+  transform: translateX(calc(var(--offset-x))) translateY(-60px) scale(1.1);
+  z-index: 1000;
+  animation: none;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  border-radius: 16px;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(212, 175, 55, 0.2);
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* hover 시 카드 뒤집기 */
+.cards-container.spread .tarot-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* 카드 뒷면 */
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0612 0%, #1a0d2e 50%, #2d1b3d 100%);
+  border-radius: 16px;
+  backface-visibility: hidden;
+  transform: rotateY(0deg);
+  overflow: hidden;
+}
+
+/* 금색 외곽 테두리 */
+.card-back-border-outer {
+  position: absolute;
+  inset: 0;
+  border: 3px solid #d4af37;
+  border-radius: 16px;
+  box-shadow:
+    inset 0 0 20px rgba(212, 175, 55, 0.3),
+    0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+/* 카드 뒷면 컨텐츠 */
+.card-back-content {
+  position: absolute;
+  inset: 12px;
+  border: 2px solid rgba(212, 175, 55, 0.4);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* 기하학적 무늬 */
+.card-back-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 20px,
+      rgba(183, 148, 246, 0.08) 20px,
+      rgba(183, 148, 246, 0.08) 21px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 20px,
+      rgba(183, 148, 246, 0.08) 20px,
+      rgba(183, 148, 246, 0.08) 21px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 28px,
+      rgba(212, 175, 55, 0.05) 28px,
+      rgba(212, 175, 55, 0.05) 30px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 28px,
+      rgba(212, 175, 55, 0.05) 28px,
+      rgba(212, 175, 55, 0.05) 30px
+    );
+}
+
+/* 발광하는 흰색 점들과 금색 별빛 */
+.card-back-stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+    radial-gradient(circle at 80% 30%, rgba(212, 175, 55, 0.6) 2px, transparent 2px),
+    radial-gradient(circle at 35% 50%, rgba(255, 255, 255, 0.6) 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(212, 175, 55, 0.7) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 15% 75%, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+    radial-gradient(circle at 85% 80%, rgba(212, 175, 55, 0.5) 2px, transparent 2px),
+    radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.9) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 60% 85%, rgba(212, 175, 55, 0.8) 1px, transparent 1px);
+  background-size: 100% 100%;
+  animation: twinkleStars 3s ease-in-out infinite;
+}
+
+@keyframes twinkleStars {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* 카드 앞면 */
+.card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+/* 영화 포스터 카드 */
+.movie-poster {
+  position: relative;
+  border: 3px solid rgba(212, 175, 55, 0.5);
+}
+
+.movie-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.7) 60%,
+    transparent 100%
+  );
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.cards-container.spread .tarot-card:hover .movie-overlay {
+  transform: translateY(0);
+}
+
+.movie-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.movie-rating {
+  font-size: 0.9rem;
+  color: #d4af37;
+  font-weight: 600;
 }
 
 /* ===== 반응형 ===== */
-@media (max-width: 1024px) {
+@media (max-width: 1400px) {
+  .tarot-card {
+    width: 240px;
+    height: 380px;
+    --card-spacing: 55px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .content-wrapper {
+    padding: 40px 30px 30px 30px;
+  }
+
   .logo {
-    font-size: 4rem;
+    font-size: 2.5rem;
   }
 
-  .cta-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .btn-primary-glow,
-  .btn-secondary-outline {
-    width: 100%;
-    max-width: 400px;
-    justify-content: center;
+  .tarot-card {
+    width: 200px;
+    height: 320px;
+    --card-spacing: 45px;
   }
 }
 
 @media (max-width: 768px) {
   .content-wrapper {
-    padding: 60px 20px;
+    padding: 30px 20px 20px 20px;
   }
 
   .logo {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .tagline {
-    font-size: 1.375rem;
-  }
-
-  .description {
     font-size: 1rem;
   }
 
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .description {
+    font-size: 0.85rem;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+
+  .tarot-card {
+    width: 140px;
+    height: 230px;
+    --card-spacing: 32px;
+  }
+
+  .movie-title {
+    font-size: 0.85rem;
+  }
+
+  .movie-rating {
+    font-size: 0.8rem;
   }
 }
 
 @media (max-width: 480px) {
   .logo {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
   }
 
   .tagline {
-    font-size: 1.125rem;
+    font-size: 0.9rem;
   }
 
-  .btn-primary-glow,
-  .btn-secondary-outline {
-    padding: 14px 32px;
+  .description {
+    font-size: 0.75rem;
+  }
+
+  .section-title {
     font-size: 1rem;
   }
 
-  .feature-card {
-    padding: 32px 24px;
+  .tarot-card {
+    width: 100px;
+    height: 160px;
+    --card-spacing: 22px;
   }
-}
 
-@media (min-width: 1600px) {
-  .logo {
-    font-size: 6rem;  /* ✅ 추가 */
+  .cards-container.spread .tarot-card:hover {
+    transform: translateX(calc(var(--offset-x))) translateY(-30px) scale(1.05);
   }
-  
-  .tagline {
-    font-size: 2rem;
-  }
-  
-  .description {
-    font-size: 1.25rem;
-  }
-  
-  .btn-primary-glow,
-  .btn-secondary-outline {
-    padding: 20px 48px;
-    font-size: 1.25rem;
-  }
-  
-  .feature-card {
-    padding: 48px 40px;
-  }
-  
-  .feature-icon {
-    font-size: 4rem;
-  }
-  
-  .feature-title {
-    font-size: 1.5rem;
-  }
-  
-  .feature-description {
-    font-size: 1.125rem;
-  }
-}
 
-@media (min-width: 1920px) {
-  .content-wrapper {
-    max-width: 1800px;
-    padding: 100px 80px;
+  .movie-title {
+    font-size: 0.7rem;
   }
-  
-  .logo {
-    font-size: 7rem;
-  }
-  
-  .tagline {
-    font-size: 2.25rem;
-  }
-  
-  .features-grid {
-    gap: 48px;
-  }
-}
 
-@media (min-width: 2560px) {
-  .content-wrapper {
-    max-width: 2200px;
-    padding: 120px 120px;
+  .movie-rating {
+    font-size: 0.65rem;
   }
-  
-  .logo {
-    font-size: 8rem;
+
+  .movie-overlay {
+    padding: 10px;
   }
 }
 </style>

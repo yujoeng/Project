@@ -134,8 +134,8 @@ onMounted(() => {
 
     <!-- 전체 영화 헤더 -->
     <div v-else class="standard-header">
-      <h1 class="standard-title">최고 평점 영화 목록 🎬</h1>
-      <p class="standard-subtitle">TMDB 기반 인기 영화를 만나보세요</p>
+      <h1 class="standard-title">🎬 영화 목록 </h1>
+      <p class="standard-subtitle"> 당신의 감정에 어울리는 장면을 발견해보세요 </p>
     </div>
 
     <!-- 로딩 -->

@@ -7,6 +7,7 @@ import HomeView from '../views/HomeView.vue'
 import MovieListView from '../views/MovieListView.vue'
 import MovieDetailView from '../views/MovieDetailView.vue'
 import ReviewSearchView from '../views/ReviewSearchView.vue'
+import MovieSearchView from '../views/MovieSearchView.vue'
 import RecommendedView from '../views/RecommendedView.vue'
 import LoginView from '@/views/LoginView.vue'
 import SignupView from '@/views/SignupView.vue'
@@ -20,6 +21,7 @@ const routes = [
   { path: '/movies', name: 'movies', component: MovieListView },
   { path: '/movies/:movieId', name: 'movie-detail', component: MovieDetailView },
   { path: '/review-search', name: 'review-search', component: ReviewSearchView },
+  { path: '/search', name: 'movie-search', component: MovieSearchView },
   { path: '/recommended', name: 'recommended', component: RecommendedView, meta: { requiresAuth: true }, },
   { path: '/login', name: 'login', component: LoginView },
   { path: '/signup', name: 'signup', component: SignupView },

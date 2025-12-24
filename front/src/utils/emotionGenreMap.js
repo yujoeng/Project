@@ -30,7 +30,7 @@ export const emotionToGenres = {
   },
   sadness: {
     name: '슬픔',
-    genreIds: [18, 10749, 10402], // 드라마, 로맨스, 음악
+    genreIds: [18, 10749, 10402, 99], // 드라마, 로맨스, 음악, 다큐멘터리, 
     keywords: ['슬픔', '눈물', '감동', '위로']
   },
   anger: {

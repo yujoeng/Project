@@ -1,6 +1,18 @@
 /* CINEmotion Global Styles */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
+html, body, #app {
+  height: 100%;
+}
+
+body {
+  /* 수정: 전체 페이지 스크롤 금지 → main에서만 스크롤 */
+  overflow: hidden;
+
+  /* 수정: 가로 오버플로우 방지 */
+  overflow-x: hidden;
+}
+
 :root {
   /* 컬러 시스템 */
   --primary-purple: #7b10ad;
