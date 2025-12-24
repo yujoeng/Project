@@ -333,3 +333,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# backup files
+*.backup
+*.bak
+*~

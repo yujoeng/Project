@@ -1,0 +1,117 @@
+[
+  {
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$temporary$hash",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "movie_lover",
+      "first_name": "",
+      "last_name": "",
+      "email": "movie@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-15T10:00:00Z",
+      "nickname": "영화광",
+      "favorite_genres": ["액션", "스릴러", "SF"],
+      "favorite_actors": "송강호, 마동석, 톰 크루즈, 크리스 헴스워스",
+      "preferred_countries": ["한국", "미국"],
+      "profile_image": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$temporary$hash",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "drama_fan",
+      "first_name": "",
+      "last_name": "",
+      "email": "drama@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-20T14:30:00Z",
+      "nickname": "드라마 마니아",
+      "favorite_genres": ["드라마", "로맨스", "코미디"],
+      "favorite_actors": "전도연, 손예진, 라이언 고슬링",
+      "preferred_countries": ["한국", "프랑스"],
+      "profile_image": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$temporary$hash",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "horror_master",
+      "first_name": "",
+      "last_name": "",
+      "email": "horror@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-02-01T09:15:00Z",
+      "nickname": "공포영화 마스터",
+      "favorite_genres": ["공포", "스릴러"],
+      "favorite_actors": "박신혜, 제임스 완",
+      "preferred_countries": ["한국", "미국", "일본"],
+      "profile_image": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$temporary$hash",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "animation_lover",
+      "first_name": "",
+      "last_name": "",
+      "email": "animation@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-02-10T16:45:00Z",
+      "nickname": "애니메이션 덕후",
+      "favorite_genres": ["애니메이션", "판타지", "코미디"],
+      "favorite_actors": "미야자키 하야오, 신카이 마코토",
+      "preferred_countries": ["일본", "미국"],
+      "profile_image": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$600000$temporary$hash",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "classic_cinema",
+      "first_name": "",
+      "last_name": "",
+      "email": "classic@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-02-15T11:20:00Z",
+      "nickname": "클래식 시네마",
+      "favorite_genres": ["드라마", "다큐멘터리"],
+      "favorite_actors": "알 파치노, 로버트 드 니로, 최민식",
+      "preferred_countries": ["미국", "프랑스", "영국"],
+      "profile_image": null,
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

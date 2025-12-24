@@ -3,6 +3,7 @@ import { ref, onMounted, watch, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { getPopularMovies, getMoviesByEmotion } from '@/api/tmdb'
 import MovieCard from '../components/MovieCard.vue'
+import apiClient from '@/api/axios'
 
 const router = useRouter()
 const route = useRoute()
@@ -10,6 +11,22 @@ const route = useRoute()
 const movies = ref([])
 const isLoading = ref(true)
 const errorMessage = ref('')
+
+// 감정 정렬 필터 상태
+const selectedEmotion = ref('')
+const sortOrder = ref('desc') // 'desc' 또는 'asc'
+const isEmotionSorting = ref(false) // 감정 정렬 모드 여부
+
+// 감정 옵션
+const emotionOptions = [
+  { value: 'joy', label: '기쁨', emoji: '😊' },
+  { value: 'sadness', label: '슬픔', emoji: '😢' },
+  { value: 'anger', label: '분노', emoji: '😠' },
+  { value: 'fear', label: '두려움', emoji: '😨' },
+  { value: 'excitement', label: '흥분', emoji: '🤩' },
+  { value: 'calm', label: '평온', emoji: '😌' },
+  { value: 'depression', label: '우울', emoji: '😔' }
+]
 
 const isEmotionBased = computed(() => !!route.query.emotion)
 const emotionName = computed(() => route.query.emotionName || '')
@@ -54,7 +71,7 @@ const loadMovies = async () => {
       const data = await getPopularMovies()
       movies.value = data.results || []
     }
-    
+
     console.log('// 디버깅용 최종 영화 개수:', movies.value.length)
   } catch (error) {
     console.error('❌ 영화 로딩 실패:', error)
@@ -63,6 +80,61 @@ const loadMovies = async () => {
     isLoading.value = false
   }
 }
+
+// 감정별 정렬로 영화 로드
+const loadMoviesByEmotion = async () => {
+  if (!selectedEmotion.value) {
+    // 감정 선택 안 했으면 일반 목록 로드
+    isEmotionSorting.value = false
+    await loadMovies()
+    return
+  }
+
+  isLoading.value = true
+  errorMessage.value = ''
+  isEmotionSorting.value = true
+
+  try {
+    const response = await apiClient.get('/movies/emotion-sorted/', {
+      params: {
+        emotion: selectedEmotion.value,
+        order: sortOrder.value,
+        limit: 30
+      }
+    })
+
+    movies.value = response.data.results || []
+    console.log('✅ 감정별 정렬 완료:', response.data)
+  } catch (error) {
+    console.error('❌ 감정별 정렬 실패:', error)
+    errorMessage.value = '감정별 영화 정렬에 실패했습니다.'
+    movies.value = []
+  } finally {
+    isLoading.value = false
+  }
+}
+
+// 정렬 순서 토글
+const toggleSortOrder = () => {
+  sortOrder.value = sortOrder.value === 'desc' ? 'asc' : 'desc'
+  if (isEmotionSorting.value) {
+    loadMoviesByEmotion()
+  }
+}
+
+// 감정 필터 초기화
+const resetEmotionFilter = () => {
+  selectedEmotion.value = ''
+  sortOrder.value = 'desc'
+  isEmotionSorting.value = false
+  loadMovies()
+}
+
+// 선택한 감정의 정보 가져오기
+const getSelectedEmotionInfo = computed(() => {
+  if (!selectedEmotion.value) return null
+  return emotionOptions.find(e => e.value === selectedEmotion.value)
+})
 
 const goDetail = (id) => {
   router.push(`/movies/${id}`)
@@ -136,6 +208,64 @@ onMounted(() => {
     <div v-else class="standard-header">
       <h1 class="standard-title">🎬 영화 목록 </h1>
       <p class="standard-subtitle"> 당신의 감정에 어울리는 장면을 발견해보세요 </p>
+
+      <!-- 감정 정렬 필터 -->
+      <div class="emotion-filter">
+        <div class="filter-header">
+          <h3 class="filter-title">💭 감정별로 영화 찾기</h3>
+          <p class="filter-description">다른 사람들이 느낀 감정을 기준으로 영화를 찾아보세요</p>
+        </div>
+
+        <div class="filter-controls">
+          <div class="emotion-selector">
+            <label for="emotion-select" class="select-label">감정 선택</label>
+            <select
+              id="emotion-select"
+              v-model="selectedEmotion"
+              @change="loadMoviesByEmotion"
+              class="emotion-select"
+            >
+              <option value="">-- 감정을 선택하세요 --</option>
+              <option
+                v-for="emotion in emotionOptions"
+                :key="emotion.value"
+                :value="emotion.value"
+              >
+                {{ emotion.emoji }} {{ emotion.label }}
+              </option>
+            </select>
+          </div>
+
+          <button
+            v-if="selectedEmotion"
+            @click="toggleSortOrder"
+            class="sort-order-btn"
+            :class="{ active: isEmotionSorting }"
+          >
+            <span class="sort-icon">{{ sortOrder === 'desc' ? '↓' : '↑' }}</span>
+            <span>{{ sortOrder === 'desc' ? '많은 순' : '적은 순' }}</span>
+          </button>
+
+          <button
+            v-if="isEmotionSorting"
+            @click="resetEmotionFilter"
+            class="reset-btn"
+          >
+            <span>✕</span>
+            <span>초기화</span>
+          </button>
+        </div>
+
+        <!-- 선택된 감정 표시 -->
+        <div v-if="isEmotionSorting && getSelectedEmotionInfo" class="selected-emotion-info">
+          <span class="emotion-badge">
+            {{ getSelectedEmotionInfo.emoji }} {{ getSelectedEmotionInfo.label }}
+          </span>
+          <span class="info-text">
+            리뷰가 {{ sortOrder === 'desc' ? '많은' : '적은' }} 순으로 정렬 중
+          </span>
+        </div>
+      </div>
     </div>
 
     <!-- 로딩 -->
@@ -174,7 +304,14 @@ onMounted(() => {
           class="movie-item"
           @click="goDetail(movie.id)"
         >
-          <MovieCard :movie="movie" />
+          <div class="movie-card-wrapper">
+            <MovieCard :movie="movie" />
+            <!-- 감정 리뷰 수 배지 -->
+            <div v-if="isEmotionSorting && movie.emotion_count" class="emotion-count-badge">
+              <span class="badge-emoji">{{ getSelectedEmotionInfo?.emoji }}</span>
+              <span class="badge-count">{{ movie.emotion_count }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -510,11 +647,190 @@ onMounted(() => {
   margin-bottom: 32px;
 }
 
+/* ===== 감정 필터 UI ===== */
+.emotion-filter {
+  background: rgba(183, 148, 246, 0.05);
+  border: 1px solid rgba(183, 148, 246, 0.2);
+  border-radius: 20px;
+  padding: 32px;
+  margin-top: 40px;
+  backdrop-filter: blur(10px);
+}
+
+.filter-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.filter-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.filter-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.filter-controls {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.emotion-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 250px;
+}
+
+.select-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.emotion-select {
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(183, 148, 246, 0.3);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.emotion-select:hover {
+  border-color: rgba(183, 148, 246, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.emotion-select:focus {
+  outline: none;
+  border-color: var(--primary-purple);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.emotion-select option {
+  background: #1a0d2e;
+  color: white;
+  padding: 8px;
+}
+
+.sort-order-btn,
+.reset-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 2px solid rgba(183, 148, 246, 0.3);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sort-order-btn:hover,
+.reset-btn:hover {
+  border-color: rgba(183, 148, 246, 0.6);
+  background: rgba(183, 148, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+.sort-order-btn.active {
+  background: linear-gradient(135deg, var(--primary-purple), #d946ef);
+  border-color: var(--primary-purple);
+  color: white;
+}
+
+.sort-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.reset-btn {
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.reset-btn:hover {
+  border-color: rgba(239, 68, 68, 0.6);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.selected-emotion-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: rgba(183, 148, 246, 0.1);
+  border: 1px solid rgba(183, 148, 246, 0.3);
+  border-radius: 12px;
+}
+
+.emotion-badge {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-mystic);
+}
+
+.info-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* ===== 영화 카드 래퍼 ===== */
+.movie-card-wrapper {
+  position: relative;
+}
+
+.emotion-count-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(183, 148, 246, 0.4);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.badge-emoji {
+  font-size: 1.1rem;
+}
+
+.badge-count {
+  color: #b794f6;
+}
+
 /* ===== 반응형 ===== */
 @media (max-width: 1200px) {
   .movie-grid {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 20px;
+  }
+
+  .emotion-filter {
+    padding: 24px;
   }
 }
 
@@ -550,6 +866,25 @@ onMounted(() => {
     font-size: 0.95rem;
     flex-direction: column;
     gap: 8px;
+  }
+
+  .emotion-filter {
+    padding: 20px;
+  }
+
+  .filter-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .emotion-selector {
+    min-width: 100%;
+  }
+
+  .sort-order-btn,
+  .reset-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 

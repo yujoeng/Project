@@ -150,40 +150,73 @@ const fetchFavoriteMovies = async () => {
   }
 }
 
-// 찜한 영화 기반 추천
+// 찜한 영화 기반 추천 (개선된 버전 - 장르 기반)
 const fetchFavoriteBasedMovies = async () => {
   if (!favoriteMovies.value || favoriteMovies.value.length === 0) {
     return
   }
 
   try {
-    const allSimilarMovies = []
+    // 1. 찜한 영화들의 장르 수집
+    const genreCount = {} // 장르별 빈도 계산
 
-    // 찜한 영화 중 최대 5개만 사용 (API 호출 제한)
-    const moviesToCheck = favoriteMovies.value.slice(0, 5)
+    // 찜한 영화 중 최대 10개의 장르 정보 수집
+    const moviesToAnalyze = favoriteMovies.value.slice(0, 10)
 
-    for (const movieId of moviesToCheck) {
+    for (const movieId of moviesToAnalyze) {
       try {
-        const response = await axios.get(`${TMDB_BASE_URL}/movie/${movieId}/similar`, {
+        const response = await axios.get(`${TMDB_BASE_URL}/movie/${movieId}`, {
           params: {
             api_key: TMDB_API_KEY,
-            language: 'ko-KR',
-            page: 1
+            language: 'ko-KR'
           }
         })
 
-        allSimilarMovies.push(...response.data.results.slice(0, 4))
+        // 장르 ID별 빈도 계산
+        response.data.genres.forEach(genre => {
+          genreCount[genre.id] = (genreCount[genre.id] || 0) + 1
+        })
       } catch (error) {
-        console.error(`영화 ${movieId}의 비슷한 영화 로딩 실패:`, error)
+        console.warn(`영화 ${movieId} 정보 로딩 실패`)
       }
     }
 
-    // 중복 제거 및 찜한 영화 제외
-    const uniqueMovies = Array.from(
-      new Map(allSimilarMovies.map(movie => [movie.id, movie])).values()
-    ).filter(movie => !favoriteMovies.value.includes(movie.id))
+    // 2. 가장 많이 나온 장르 상위 3개 선택
+    const topGenres = Object.entries(genreCount)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([genreId]) => genreId)
+      .join(',')
 
-    favoriteBasedMovies.value = uniqueMovies.slice(0, 12)
+    if (!topGenres) {
+      console.warn('추출된 장르가 없습니다.')
+      return
+    }
+
+    console.log('찜한 영화의 주요 장르 ID:', topGenres)
+
+    // 3. Discover API로 해당 장르의 고평점 영화 추천
+    const response = await axios.get(`${TMDB_BASE_URL}/discover/movie`, {
+      params: {
+        api_key: TMDB_API_KEY,
+        language: 'ko-KR',
+        with_genres: topGenres,
+        sort_by: 'vote_average.desc', // 평점 높은 순
+        'vote_average.gte': 7.0, // 평점 7.0 이상
+        'vote_count.gte': 100, // 최소 평가 100개 이상
+        page: 1
+      }
+    })
+
+    // 4. 찜한 영화 제외 및 상위 12개 선택
+    const uniqueMovies = response.data.results
+      .filter(movie => !favoriteMovies.value.includes(movie.id))
+      .slice(0, 12)
+
+    favoriteBasedMovies.value = uniqueMovies
+
+    console.log(`찜한 영화 기반 추천: ${uniqueMovies.length}편`)
+
   } catch (error) {
     console.error('찜한 영화 기반 추천 로딩 실패:', error)
   }
@@ -243,7 +276,7 @@ const hasRecommendations = computed(() => {
       <section v-if="favoriteBasedMovies.length > 0" class="recommendation-section">
         <h2 class="section-title">
           <span class="title-icon">❤️</span>
-          내가 찜한 영화와 비슷한 작품
+          내가 찜한 영화와 비슷한 장르의 고평점 작품
         </h2>
         <div class="movies-grid">
           <div

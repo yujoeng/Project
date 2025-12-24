@@ -1,0 +1,265 @@
+[
+{
+  "model": "community.review",
+  "pk": 12,
+  "fields": {
+    "user": 6,
+    "movie_id": 83533,
+    "title": "아름답지만 불편한",
+    "content": "이렇게 아름다울 수 있는데, 동시에 이렇게 불편할 수도 있다는 게 놀라웠다.\n인간의 욕망과 파괴성이 판도라의 색채 속에서 더욱 선명하게 드러난다.\n시각적 향기에 취해 있다가, 어느 순간 씁쓸한 잔향이 남는다.",
+    "rating": 3.0,
+    "created_at": "2025-12-24T03:00:58.004Z",
+    "emotion_tags": [
+      "sadness",
+      "anger",
+      "depression"
+    ],
+    "likes": [
+      3,
+      4,
+      5
+    ]
+  }
+},
+{
+  "model": "community.review",
+  "pk": 13,
+  "fields": {
+    "user": 3,
+    "movie_id": 83533,
+    "title": "아바타는 극장으로",
+    "content": "아바타는 여전히 ‘극장에서 봐야 하는 영화’라는 사실을 다시 한 번 증명한다.\n서사의 밀도는 전작보다 차분해졌지만, 판도라의 세계를 확장하는 방식은 훨씬 성숙해졌다.\n단순한 볼거리를 넘어 인간과 자연, 선택의 무게를 고민하게 만드는 시리즈로 자리 잡았다는 점이 인상 깊다.",
+    "rating": 4.0,
+    "created_at": "2025-12-24T03:02:25.814Z",
+    "emotion_tags": [
+      "excitement",
+      "calm",
+      "joy"
+    ],
+    "likes": [
+      4,
+      5
+    ]
+  }
+},
+{
+  "model": "community.review",
+  "pk": 14,
+  "fields": {
+    "user": 5,
+    "movie_id": 83533,
+    "title": "판도라는 살아있어!",
+    "content": "판도라는 또 하나의 생명체처럼 숨 쉬고 있었다.\n인간이 자연을 대하는 방식, 공존이라는 말의 무게가 조용히 마음에 남는다.\n화려함보다도, 끝나고 난 뒤 찾아오는 잔잔한 여운이 오래 지속되는 영화였다.",
+    "rating": 4.0,
+    "created_at": "2025-12-24T03:03:45.079Z",
+    "emotion_tags": [],
+    "likes": []
+  }
+},
+{
+  "model": "community.review",
+  "pk": 15,
+  "fields": {
+    "user": 4,
+    "movie_id": 83533,
+    "title": "눈이 즐거운 영화",
+    "content": "시작하자마자 눈을 뗄 수 없었다.\n장면 하나하나가 너무 예뻐서 그냥 ‘와…’라는 말밖에 안 나옴.\n깊이 생각하지 않아도 충분히 즐길 수 있고, 영화관에서 보는 내내 기분이 좋아지는 영화였다.",
+    "rating": 5.0,
+    "created_at": "2025-12-24T03:05:09.281Z",
+    "emotion_tags": [
+      "excitement",
+      "joy"
+    ],
+    "likes": [
+      7
+    ]
+  }
+},
+{
+  "model": "community.review",
+  "pk": 16,
+  "fields": {
+    "user": 7,
+    "movie_id": 83533,
+    "title": "슉 슈슉 빠르게 달린다",
+    "content": "숨 돌릴 틈 없이 흘러가는 전개 덕분에 러닝타임이 전혀 길게 느껴지지 않았다.\n추격과 대립 장면에서 느껴지는 긴장감이 상당했고, 판도라의 공간 활용이 특히 인상적이었다.\n손에 땀을 쥐게 만드는 순간들이 계속 이어진다.",
+    "rating": 4.0,
+    "created_at": "2025-12-24T03:06:35.854Z",
+    "emotion_tags": [
+      "excitement",
+      "fear"
+    ],
+    "likes": []
+  }
+},
+{
+  "model": "community.review",
+  "pk": 17,
+  "fields": {
+    "user": 7,
+    "movie_id": 1084242,
+    "title": "전작에 이어 러닝타임이 짧게 느껴지는 영화",
+    "content": "사건이 빠르게 전개돼서 지루할 틈이 없었다.\n추적 장면과 액션의 리듬이 살아 있고, 코믹한 긴장감도 잘 유지된다.\n메시지도 좋지만 무엇보다 ‘재밌게 잘 달리는 영화’라는 인상이 강하다.",
+    "rating": 4.0,
+    "created_at": "2025-12-24T03:08:55.389Z",
+    "emotion_tags": [
+      "excitement"
+    ],
+    "likes": [
+      3,
+      4,
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "community.review",
+  "pk": 18,
+  "fields": {
+    "user": 5,
+    "movie_id": 1084242,
+    "title": "좋은 영화는 일부러 가르치려 하지 않는다",
+    "content": "서로 다른 존재가 함께 살아간다는 것이 얼마나 어려운 일인지,\n주토피아는 이번에도 조용히, 그러나 분명하게 말해준다.\n웃고 있었는데 어느 순간 마음이 먹먹해지는 장면들이 오래 남는다.",
+    "rating": 4.0,
+    "created_at": "2025-12-24T03:14:48.302Z",
+    "emotion_tags": [
+      "sadness",
+      "calm",
+      "joy"
+    ],
+    "likes": [
+      3
+    ]
+  }
+},
+{
+  "model": "community.review",
+  "pk": 19,
+  "fields": {
+    "user": 3,
+    "movie_id": 1084242,
+    "title": "10년의 기다림이 아쉽지 않다",
+    "content": "주토피아 2는 전작의 세계관을 단순 반복하지 않고, 사회적 은유를 한 단계 더 복잡하게 확장한다.\n유머와 메시지의 균형이 안정적이며, 캐릭터 간 관계 역시 성숙해졌다.\n어린이 영화의 외피를 쓴 사회 드라마라는 정체성을 여전히 잘 유지하고 있다.",
+    "rating": 5.0,
+    "created_at": "2025-12-24T03:16:25.709Z",
+    "emotion_tags": [
+      "joy",
+      "calm",
+      "excitement"
+    ],
+    "likes": []
+  }
+},
+{
+  "model": "community.review",
+  "pk": 20,
+  "fields": {
+    "user": 4,
+    "movie_id": 1084242,
+    "title": "좋은 영화: 그냥 재밌는 영화",
+    "content": "너무 귀엽고 너무 웃겼다.\n중간중간 빵 터지는 장면도 많고, 캐릭터들이 더 살아 움직이는 느낌이라 보는 내내 즐거웠다.\n생각 안 하고 봐도 재밌고, 보고 나면 기분 좋아지는 영화!",
+    "rating": 5.0,
+    "created_at": "2025-12-24T03:17:59.569Z",
+    "emotion_tags": [
+      "joy",
+      "excitement"
+    ],
+    "likes": []
+  }
+},
+{
+  "model": "community.review",
+  "pk": 21,
+  "fields": {
+    "user": 6,
+    "movie_id": 1084242,
+    "title": "웃음 뒤 사회의 느와르",
+    "content": "알록달록한 동물 도시 뒤에 깔린 차별과 두려움의 정서는 여전히 날카롭다.\n웃음으로 포장되어 있지만, 메시지는 오히려 더 직접적으로 다가온다.\n달콤한 향 뒤에 남는 씁쓸함이 인상적인 영화였다",
+    "rating": 4.0,
+    "created_at": "2025-12-24T03:20:09.461Z",
+    "emotion_tags": [
+      "depression",
+      "calm"
+    ],
+    "likes": []
+  }
+},
+{
+  "model": "community.review",
+  "pk": 22,
+  "fields": {
+    "user": 6,
+    "movie_id": 13,
+    "title": "냉혹한 사회 속 따듯한 사람들",
+    "content": "이 영화가 따뜻하게 느껴지는 이유는, 그 안에 외로움과 상실이 깊게 깔려 있기 때문이다.\n사랑은 늘 엇갈리고, 사람들은 각자의 방식으로 결핍을 안고 살아간다.\n포레스트의 순수함이 오히려 세상의 잔인함을 더 또렷하게 드러낸다.",
+    "rating": 4.0,
+    "created_at": "2025-12-24T03:22:54.355Z",
+    "emotion_tags": [
+      "calm",
+      "sadness",
+      "depression",
+      "joy"
+    ],
+    "likes": []
+  }
+},
+{
+  "model": "community.review",
+  "pk": 23,
+  "fields": {
+    "user": 5,
+    "movie_id": 13,
+    "title": "인생의 회전목마",
+    "content": "인생이 계획대로 흘러가지 않아도 괜찮다는 말을,\n포레스트는 아주 조용한 태도로 건넨다.\n담담하게 살아간 한 사람의 이야기가 이렇게 큰 위로가 될 수 있다는 게 놀랍다.",
+    "rating": 5.0,
+    "created_at": "2025-12-24T03:25:57.030Z",
+    "emotion_tags": [
+      "calm",
+      "sadness",
+      "joy"
+    ],
+    "likes": [
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "community.review",
+  "pk": 24,
+  "fields": {
+    "user": 3,
+    "movie_id": 13,
+    "title": "역사의 장면엔 포레스트가 있었다",
+    "content": "포레스트 검프는 단순한 인생 이야기처럼 보이지만, 미국 현대사를 개인의 삶에 정교하게 엮어낸 뛰어난 서사 실험이다.\n과장 없는 연출과 절제된 감정선 덕분에 시간이 지나도 전혀 낡지 않는다.\n영화가 무엇으로 오래 기억되는지를 정확히 보여주는 작품이다.",
+    "rating": 5.0,
+    "created_at": "2025-12-24T03:27:46.785Z",
+    "emotion_tags": [
+      "sadness",
+      "calm",
+      "joy"
+    ],
+    "likes": [
+      4
+    ]
+  }
+},
+{
+  "model": "community.review",
+  "pk": 25,
+  "fields": {
+    "user": 4,
+    "movie_id": 13,
+    "title": "포레스트의 삶을 따라가면 인생이 있다",
+    "content": "웃다가 울다가 또 웃게 되는 영화.\n포레스트가 하는 말 하나하나가 이상하게 마음에 남는다.\n어렵지 않게 볼 수 있는데, 끝나고 나면 괜히 여운이 오래 간다.",
+    "rating": 5.0,
+    "created_at": "2025-12-24T03:29:01.865Z",
+    "emotion_tags": [
+      "joy",
+      "sadness"
+    ],
+    "likes": []
+  }
+}
+]

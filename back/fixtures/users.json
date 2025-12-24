@@ -1,0 +1,157 @@
+[
+{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$43RBOTNuEYc6pshLabkdbA$y1EYu6awvpt7+bJmniw+KcQgZ1KNITpcDsaHUnRFQrE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "user1",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-23T07:48:41.391Z",
+    "nickname": null,
+    "favorite_genres": [
+      "애니메이션"
+    ],
+    "favorite_actors": "톰 크루즈",
+    "preferred_countries": [
+      "일본",
+      "미국"
+    ],
+    "profile_image": null,
+    "created_at": "2025-12-23T07:48:42.022Z",
+    "updated_at": "2025-12-23T08:23:18.253Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$zE9i49mmjRE0GJaHJZPLat$w4Kj0UaItjFSqGQ0Eh6fQkeuTV3vpQ8FQoIYhZIyeIA=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "movie_lover",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-24T02:26:22.847Z",
+    "nickname": null,
+    "favorite_genres": [],
+    "favorite_actors": null,
+    "preferred_countries": [],
+    "profile_image": null,
+    "created_at": "2025-12-24T02:26:23.490Z",
+    "updated_at": "2025-12-24T02:26:23.490Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$LglhxQR5D2rwPU0XN3Ejgy$9NnKNN645q5Zgfpq+JlBIG1OO4HlmdouYWAEU1Ojcfg=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "hellomovie",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-24T02:37:24.643Z",
+    "nickname": null,
+    "favorite_genres": [],
+    "favorite_actors": null,
+    "preferred_countries": [],
+    "profile_image": null,
+    "created_at": "2025-12-24T02:37:25.302Z",
+    "updated_at": "2025-12-24T02:37:25.302Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$DqTfraOwV4DYCU31f5K59U$TxuJ6/P8m3iXR31HMV4hFk5elqJ8yIoUoJ3/TrLkbYc=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "life_of_pi",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-24T02:37:53.616Z",
+    "nickname": null,
+    "favorite_genres": [],
+    "favorite_actors": null,
+    "preferred_countries": [],
+    "profile_image": null,
+    "created_at": "2025-12-24T02:37:54.255Z",
+    "updated_at": "2025-12-24T02:37:54.255Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$qmkvfJyqJTcLg2tXG8HJYD$X6yH2kcuR2IVBPAoAg6yVXMFBkAXCuqhLNxPp42WpeE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "perfume",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-24T02:38:37.705Z",
+    "nickname": null,
+    "favorite_genres": [],
+    "favorite_actors": null,
+    "preferred_countries": [],
+    "profile_image": null,
+    "created_at": "2025-12-24T02:38:38.350Z",
+    "updated_at": "2025-12-24T02:38:38.350Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$rRuvvmpIAl5xSwYDOhsTkw$O1ipOpEGMvJuITCFgE/zRa6Az3GqhubgAZnKiGEZ4qw=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "catchme_catchyou",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-12-24T02:39:27.132Z",
+    "nickname": null,
+    "favorite_genres": [],
+    "favorite_actors": null,
+    "preferred_countries": [],
+    "profile_image": null,
+    "created_at": "2025-12-24T02:39:27.786Z",
+    "updated_at": "2025-12-24T02:39:27.786Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

@@ -361,18 +361,17 @@ const navigateToMovie = (movieId) => {
   width: 100%;
   height: 100%;
   max-width: 100%;
-  padding: clamp(20px, 6vh, 80px) 40px 32px 40px;
+  padding: clamp(20px, 6vh, 80px) 0 32px 0;
   opacity: 0;
   transform: translateY(30px);
   transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  
-  /* 수정: space-between 제거 → tarot는 아래로, hero는 조금 내려오게 */
   justify-content: flex-start;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-/* 지우기 */
 .content-wrapper.visible {
   opacity: 1;
   transform: translateY(0);
@@ -384,9 +383,9 @@ const navigateToMovie = (movieId) => {
   margin-top: clamp(10px, 6vh, 90px);
   margin-bottom: clamp(18px, 4vh, 40px);
   flex-shrink: 0;
+  padding: 0 40px;
 }
 
-/* logo-container 지우기 */ 
 .logo-container {
   margin-bottom: 30px;
 }
@@ -430,19 +429,17 @@ const navigateToMovie = (movieId) => {
 }
 
 .tagline {
-  /* font-size: 1.2rem;
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 8px; */
-  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  margin-bottom: 8px;
 }
 
 .description {
-  /* font-size: 0.9rem;
+  font-size: clamp(0.85rem, 1.1vw, 1.05rem);
   color: rgba(255, 255, 255, 0.6);
   margin-bottom: 0;
-  line-height: 1.6; */
-  font-size: clamp(0.85rem, 1.1vw, 1.05rem);
+  line-height: 1.6;
 }
 
 /* ===== 타로 카드 섹션 ===== */
@@ -452,6 +449,7 @@ const navigateToMovie = (movieId) => {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  padding: 0 40px;
 }
 
 .section-title {
@@ -473,8 +471,10 @@ const navigateToMovie = (movieId) => {
   flex: 1;
   position: relative;
   padding-bottom: 20px;
-  overflow: hidden;
-  max-width: 100%;
+  overflow: visible;
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
 }
 
 /* ===== 타로 카드 스타일 ===== */
@@ -504,7 +504,8 @@ const navigateToMovie = (movieId) => {
 
 /* 카드 펼쳐진 상태 */
 .cards-container.spread .tarot-card {
-  transform: translateX(calc(var(--offset-x))) translateY(0) rotate(0deg);
+  left: calc(50% + var(--offset-x));
+  transform: translateX(-50%) translateY(0) rotate(0deg);
   opacity: 1;
   animation: cardFloat 3s ease-in-out infinite;
   animation-delay: calc(var(--card-index) * 0.1s + 0.8s);
@@ -512,15 +513,15 @@ const navigateToMovie = (movieId) => {
 
 @keyframes cardFloat {
   0%, 100% {
-    transform: translateX(calc(var(--offset-x))) translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
   50% {
-    transform: translateX(calc(var(--offset-x))) translateY(-10px);
+    transform: translateX(-50%) translateY(-10px);
   }
 }
 
 .cards-container.spread .tarot-card:hover {
-  transform: translateX(calc(var(--offset-x))) translateY(-60px) scale(1.1);
+  transform: translateX(-50%) translateY(-60px) scale(1.1);
   z-index: 1000;
   animation: none;
 }
@@ -703,7 +704,12 @@ const navigateToMovie = (movieId) => {
 
 @media (max-width: 1200px) {
   .content-wrapper {
-    padding: 40px 30px 30px 30px;
+    padding: 40px 0 30px 0;
+  }
+
+  .hero-section,
+  .tarot-section {
+    padding: 0 30px;
   }
 
   .logo {
@@ -719,7 +725,12 @@ const navigateToMovie = (movieId) => {
 
 @media (max-width: 768px) {
   .content-wrapper {
-    padding: 30px 20px 20px 20px;
+    padding: 30px 0 20px 0;
+  }
+
+  .hero-section,
+  .tarot-section {
+    padding: 0 20px;
   }
 
   .logo {
@@ -755,6 +766,11 @@ const navigateToMovie = (movieId) => {
 }
 
 @media (max-width: 480px) {
+  .hero-section,
+  .tarot-section {
+    padding: 0 16px;
+  }
+
   .logo {
     font-size: 1.8rem;
   }
@@ -778,7 +794,7 @@ const navigateToMovie = (movieId) => {
   }
 
   .cards-container.spread .tarot-card:hover {
-    transform: translateX(calc(var(--offset-x))) translateY(-30px) scale(1.05);
+    transform: translateX(calc(-50% + var(--offset-x))) translateY(-30px) scale(1.05);
   }
 
   .movie-title {

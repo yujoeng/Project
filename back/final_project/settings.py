@@ -14,6 +14,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 import os
 
+from datetime import timedelta
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -62,6 +64,17 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
+}
+
+# JWT 토큰 설정 추가 (로그인 자동 로그아웃 시간 연장)
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),      # 👈 2시간 (개발용)
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),      # 👈 7일
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': False,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
 MIDDLEWARE = [
@@ -142,3 +155,5 @@ STATIC_URL = "static/"
 
 
 AUTH_USER_MODEL = 'accounts.User'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -16,6 +16,8 @@ from .serializers import (
     UserProfileSerializer,
     UserProfileUpdateSerializer,
 )
+from community.serializers import ReviewSerializer, CommentSerializer
+from community.models import Review, Comment
 
 # 회원가입 
 @api_view(['POST'])
@@ -116,4 +118,77 @@ def profile_view(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# 내가 작성한 리뷰 조회
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def my_reviews(request):
+    """현재 로그인한 사용자가 작성한 리뷰 목록 반환"""
+    reviews = Review.objects.filter(user=request.user).order_by('-created_at')
+    serializer = ReviewSerializer(reviews, many=True, context={'request': request})
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+# 내가 작성한 댓글 조회
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def my_comments(request):
+    """현재 로그인한 사용자가 작성한 댓글 목록 반환"""
+    comments = Comment.objects.filter(user=request.user).order_by('-created_at').select_related('review')
+    serializer = CommentSerializer(comments, many=True, context={'request': request})
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+# 찜한 영화 목록 조회
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def favorite_movies(request):
+    """현재 로그인한 사용자가 찜한 영화 목록 반환"""
+    user = request.user
+    return Response({
+        'favorite_movies': user.favorite_movies
+    }, status=status.HTTP_200_OK)
+
+
+# 찜하기 토글
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def toggle_favorite_movie(request):
+    """영화 찜하기 추가/제거"""
+    user = request.user
+    movie_id = request.data.get('movie_id')
+
+    if not movie_id:
+        return Response(
+            {'error': 'movie_id가 필요합니다.'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # movie_id를 정수로 변환
+    try:
+        movie_id = int(movie_id)
+    except (ValueError, TypeError):
+        return Response(
+            {'error': '유효하지 않은 movie_id입니다.'},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+
+    # 찜하기 토글
+    if movie_id in user.favorite_movies:
+        user.favorite_movies.remove(movie_id)
+        is_favorite = False
+        message = '찜하기가 취소되었습니다.'
+    else:
+        user.favorite_movies.append(movie_id)
+        is_favorite = True
+        message = '찜하기에 추가되었습니다.'
+
+    user.save()
+
+    return Response({
+        'message': message,
+        'is_favorite': is_favorite,
+        'favorite_movies': user.favorite_movies
+    }, status=status.HTTP_200_OK)
 

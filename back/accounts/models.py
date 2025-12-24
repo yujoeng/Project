@@ -9,7 +9,10 @@ class User(AbstractUser):
     favorite_genres = models.JSONField(default=list, blank=True)  # ['액션', '코미디', '스릴러']
     favorite_actors = models.TextField(blank=True, null=True)  # 쉼표로 구분
     preferred_countries = models.JSONField(default=list, blank=True)  # ['한국', '미국']
-    
+
+    # 찜한 영화 (TMDB movie_id 목록)
+    favorite_movies = models.JSONField(default=list, blank=True)  # [123, 456, 789]
+
     # 프로필 이미지 (선택사항)
     profile_image = models.URLField(blank=True, null=True)
     

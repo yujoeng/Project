@@ -4,7 +4,6 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-// // 디버깅용 개선된 감정 카드 데이터 (색상 팔레트 강화)
 const emotions = [
   {
     id: 'joy',
@@ -18,7 +17,7 @@ const emotions = [
     genreIds: [35, 10749],
     genres: ['코미디', '로맨스'],
     description: '행복하고 즐거운 기분이 들 때',
-    tagline: '웃음꽃이 피어나는 순간들'  // // 디버깅용 추가
+    tagline: '웃음꽃이 피어나는 순간들'
   },
   {
     id: 'sadness',
@@ -32,7 +31,7 @@ const emotions = [
     genreIds: [18, 99],
     genres: ['드라마'],
     description: '위로가 필요하고 감성적인 기분일 때',
-    tagline: '빗소리와 함께 펑펑 울고 싶다면'  // // 디버깅용 추가
+    tagline: '빗소리와 함께 펑펑 울고 싶다면'
   },
   {
     id: 'anger',
@@ -46,7 +45,7 @@ const emotions = [
     genreIds: [28],
     genres: ['액션'],
     description: '답답하고 시원하게 풀고 싶을 때',
-    tagline: '복수는 나의 것'  // // 디버깅용 추가
+    tagline: '복수는 나의 것'
   },
   {
     id: 'fear',
@@ -60,7 +59,7 @@ const emotions = [
     genreIds: [27, 53],
     genres: ['공포', '스릴러'],
     description: '짜릿한 긴장감을 원할 때',
-    tagline: '심장이 두근거리는 전율'  // // 디버깅용 추가
+    tagline: '심장이 두근거리는 전율'
   },
   {
     id: 'excitement',
@@ -74,7 +73,7 @@ const emotions = [
     genreIds: [28, 878],
     genres: ['액션', 'SF'],
     description: '박진감 넘치는 영화가 보고 싶을 때',
-    tagline: '아드레날린이 폭발하는'  // // 디버깅용 추가
+    tagline: '아드레날린이 폭발하는'
   },
   {
     id: 'calm',
@@ -88,7 +87,7 @@ const emotions = [
     genreIds: [16, 10751],
     genres: ['애니메이션', '가족'],
     description: '조용하고 편안한 시간을 원할 때',
-    tagline: '마음이 차분해지는'  // // 디버깅용 추가
+    tagline: '마음이 차분해지는'
   },
   {
     id: 'melancholy',
@@ -102,7 +101,7 @@ const emotions = [
     genreIds: [18, 36],
     genres: ['드라마'],
     description: '감상적이고 깊이 있는 영화가 보고 싶을 때',
-    tagline: '혼자만의 시간에 잠기고 싶을 때'  // // 디버깅용 추가
+    tagline: '혼자만의 시간에 잠기고 싶을 때'
   }
 ]
 
@@ -117,7 +116,7 @@ const selectEmotion = (emotion) => {
     query: {
       emotion: emotion.id,
       emotionName: emotion.name,
-      emotionTagline: emotion.tagline,  // // 디버깅용 추가
+      emotionTagline: emotion.tagline,
       genreIds: emotion.genreIds.join(','),
       genres: emotion.genres.join(',')
     }
@@ -209,9 +208,12 @@ const selectEmotion = (emotion) => {
 <style scoped>
 .emotion-select-view {
   min-height: 100vh;
-  padding: 60px 20px;
+  width: 100%;
+  margin: 0;
+  padding: 60px 0;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  box-sizing: border-box;
 }
 
 /* ===== 배경 효과 ===== */
@@ -245,6 +247,7 @@ const selectEmotion = (emotion) => {
   margin-bottom: 80px;
   position: relative;
   z-index: 1;
+  padding: 0 20px;
 }
 
 .title {
@@ -270,8 +273,12 @@ const selectEmotion = (emotion) => {
   align-items: center;
   justify-content: center;
   perspective: 1500px;
-  max-width: 900px;
+  max-width: 100vw;
+  width: 100%;
   margin: 0 auto;
+  overflow: visible;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .emotion-card {
@@ -283,11 +290,11 @@ const selectEmotion = (emotion) => {
   transform-origin: center bottom;
   
   --base-angle: calc((var(--card-index) - 3) * 15deg);
-  --base-x: calc((var(--card-index) - 3) * 45px);
+  --base-x: calc((var(--card-index) - 3) * 60px);
   
   transform: 
     translateX(var(--base-x))
-    translateY(100px)
+    translateY(220px)
     rotate(var(--base-angle))
     translateY(-250px);
   
@@ -297,7 +304,7 @@ const selectEmotion = (emotion) => {
 .emotion-card.hovered {
   transform: 
     translateX(var(--base-x))
-    translateY(60px)
+    translateY(180px)
     rotate(var(--base-angle))
     translateY(-290px)
     scale(1.2);
@@ -442,11 +449,18 @@ const selectEmotion = (emotion) => {
 .guide-text {
   text-align: center;
   margin-top: 80px;
+  padding: 0 20px;
   color: var(--text-muted);
   font-size: 1rem;
 }
 
 /* ===== 반응형 ===== */
+@media (max-width: 1400px) {
+  .emotion-card {
+    --base-x: calc((var(--card-index) - 3) * 50px);
+  }
+}
+
 @media (max-width: 1200px) {
   .card-deck {
     height: 500px;
@@ -455,6 +469,7 @@ const selectEmotion = (emotion) => {
   .emotion-card {
     width: 180px;
     height: 290px;
+    --base-x: calc((var(--card-index) - 3) * 45px);
   }
 }
 

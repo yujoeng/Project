@@ -41,6 +41,10 @@ const favoriteMovies = ref([])
 const favoriteMoviesDetails = ref([])
 const isLoadingFavorites = ref(false)
 
+// 찜한 영화 기반 추천 데이터 (추가됨)
+const favoriteBasedRecommendations = ref([])
+const isLoadingRecommendations = ref(false)
+
 const TMDB_API_KEY = import.meta.env.VITE_TMDB_API_KEY
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3'
 
@@ -154,10 +158,7 @@ const deleteAccount = async () => {
 
   try {
     await apiClient.post('/accounts/delete/')
-    
     alert('회원 탈퇴가 완료되었습니다.')
-    
-    // 로그아웃 처리
     await authStore.logoutUser()
     router.push('/')
   } catch (error) {
@@ -224,6 +225,8 @@ const fetchFavoriteMovies = async () => {
     // 찜한 영화가 있으면 TMDB에서 상세 정보 가져오기
     if (favoriteMovies.value.length > 0) {
       await fetchFavoriteMoviesDetails()
+      // 상세 정보 로딩 후 추천 로직 실행
+      fetchFavoriteBasedRecommendations()
     }
   } catch (error) {
     console.error('찜한 영화 조회 실패:', error)
@@ -257,6 +260,76 @@ const fetchFavoriteMoviesDetails = async () => {
   }
 }
 
+// 찜한 영화 기반 추천 로직 (개선된 버전 - 장르 기반)
+const fetchFavoriteBasedRecommendations = async () => {
+  if (favoriteMovies.value.length === 0) return
+
+  isLoadingRecommendations.value = true
+  try {
+    // 1. 찜한 영화들의 장르 수집
+    const genreCount = {} // 장르별 빈도 계산
+
+    // 찜한 영화 중 최대 10개의 장르 정보 수집
+    const moviesToAnalyze = favoriteMovies.value.slice(0, 10)
+
+    for (const movieId of moviesToAnalyze) {
+      try {
+        const response = await axios.get(`${TMDB_BASE_URL}/movie/${movieId}`, {
+          params: {
+            api_key: TMDB_API_KEY,
+            language: 'ko-KR'
+          }
+        })
+
+        // 장르 ID별 빈도 계산
+        response.data.genres.forEach(genre => {
+          genreCount[genre.id] = (genreCount[genre.id] || 0) + 1
+        })
+      } catch (error) {
+        console.warn(`영화 ${movieId} 정보 로딩 실패`)
+      }
+    }
+
+    // 2. 가장 많이 나온 장르 상위 3개 선택
+    const topGenres = Object.entries(genreCount)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([genreId]) => genreId)
+      .join(',')
+
+    if (!topGenres) {
+      console.warn('추출된 장르가 없습니다.')
+      favoriteBasedRecommendations.value = []
+      return
+    }
+
+    // 3. Discover API로 해당 장르의 고평점 영화 추천
+    const response = await axios.get(`${TMDB_BASE_URL}/discover/movie`, {
+      params: {
+        api_key: TMDB_API_KEY,
+        language: 'ko-KR',
+        with_genres: topGenres,
+        sort_by: 'vote_average.desc', // 평점 높은 순
+        'vote_average.gte': 7.0, // 평점 7.0 이상
+        'vote_count.gte': 100, // 최소 평가 100개 이상
+        page: 1
+      }
+    })
+
+    // 4. 찜한 영화 제외 및 상위 6개 선택
+    const uniqueMovies = response.data.results
+      .filter(movie => !favoriteMovies.value.includes(movie.id))
+      .slice(0, 6)
+
+    favoriteBasedRecommendations.value = uniqueMovies
+
+  } catch (error) {
+    console.error('추천 영화 로딩 실패:', error)
+  } finally {
+    isLoadingRecommendations.value = false
+  }
+}
+
 onMounted(async () => {
   await fetchProfile()
   await Promise.all([fetchMyReviews(), fetchMyComments(), fetchFavoriteMovies()])
@@ -267,11 +340,9 @@ onMounted(async () => {
   <div class="profile-page">
     <h1>내 프로필</h1>
 
-    <!-- 성공/에러 메시지 -->
     <p v-if="message" class="success-message">{{ message }}</p>
     <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
 
-    <!-- 기본 정보 -->
     <div class="profile-section">
       <h2>기본 정보</h2>
       
@@ -296,11 +367,9 @@ onMounted(async () => {
       </div>
     </div>
 
-    <!-- 영화 취향 -->
     <div class="profile-section">
       <h2>영화 취향</h2>
 
-      <!-- 선호 장르 -->
       <div class="preference-group">
         <label>선호 장르</label>
         <div v-if="isEditing" class="genre-grid">
@@ -325,7 +394,6 @@ onMounted(async () => {
         </div>
       </div>
 
-      <!-- 좋아하는 배우 -->
       <div class="preference-group">
         <label>좋아하는 배우</label>
         <input 
@@ -336,7 +404,6 @@ onMounted(async () => {
         <span v-else>{{ profile.favorite_actors || '미설정' }}</span>
       </div>
 
-      <!-- 관심 국가 -->
       <div class="preference-group">
         <label>관심 국가 영화</label>
         <div v-if="isEditing" class="country-grid">
@@ -361,7 +428,6 @@ onMounted(async () => {
         </div>
       </div>
 
-      <!-- 수정/저장 버튼 -->
       <div class="button-group">
         <button v-if="!isEditing" @click="isEditing = true" class="btn-primary">
           프로필 수정
@@ -373,17 +439,14 @@ onMounted(async () => {
       </div>
     </div>
 
-    <!-- 찜한 영화 -->
     <div class="profile-section">
       <h2>찜한 영화 ({{ favoriteMoviesDetails.length }})</h2>
 
-      <!-- 로딩 -->
       <div v-if="isLoadingFavorites" class="activity-loading">
         <div class="loading-spinner"></div>
         <p>찜한 영화를 불러오는 중...</p>
       </div>
 
-      <!-- 빈 상태 -->
       <div v-else-if="favoriteMoviesDetails.length === 0" class="empty-activity">
         <p>아직 찜한 영화가 없습니다.</p>
         <button @click="router.push('/movies')" class="btn-secondary" style="margin-top: 16px;">
@@ -391,7 +454,6 @@ onMounted(async () => {
         </button>
       </div>
 
-      <!-- 찜한 영화 그리드 -->
       <div v-else class="favorite-movies-grid">
         <div
           v-for="movie in favoriteMoviesDetails"
@@ -418,18 +480,49 @@ onMounted(async () => {
       </div>
     </div>
 
-    <!-- 내 활동 -->
+    <div v-if="favoriteBasedRecommendations.length > 0" class="profile-section recommend-section">
+      <h2>❤️ 이런 영화는 어떠세요?</h2>
+      <p class="section-desc">회원님이 찜한 영화와 비슷한 작품들을 모아봤어요.</p>
+      
+      <div v-if="isLoadingRecommendations" class="activity-loading">
+        <div class="loading-spinner"></div>
+      </div>
+
+      <div v-else class="favorite-movies-grid">
+        <div
+          v-for="movie in favoriteBasedRecommendations"
+          :key="movie.id"
+          class="favorite-movie-card recommend-card"
+          @click="goToMovie(movie.id)"
+        >
+          <div class="favorite-movie-poster">
+            <img
+              v-if="movie.poster_path"
+              :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`"
+              :alt="movie.title"
+            />
+            <div v-else class="no-poster">🎬</div>
+          </div>
+          <div class="favorite-movie-info">
+            <h4 class="favorite-movie-title">{{ movie.title }}</h4>
+            <div class="favorite-movie-meta">
+              <span class="favorite-rating">⭐ {{ movie.vote_average?.toFixed(1) }}</span>
+              <span class="favorite-year">{{ movie.release_date?.split('-')[0] }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="profile-section">
       <h2>내 활동</h2>
 
-      <!-- 로딩 -->
       <div v-if="isLoadingActivity" class="activity-loading">
         <div class="loading-spinner"></div>
         <p>활동 내역을 불러오는 중...</p>
       </div>
 
       <div v-else class="activity-container">
-        <!-- 내가 작성한 리뷰 -->
         <div class="activity-section">
           <h3 class="activity-title">
             <span class="activity-icon">✍️</span>
@@ -471,7 +564,6 @@ onMounted(async () => {
           </button>
         </div>
 
-        <!-- 내가 작성한 댓글 -->
         <div class="activity-section">
           <h3 class="activity-title">
             <span class="activity-icon">💬</span>
@@ -506,7 +598,6 @@ onMounted(async () => {
       </div>
     </div>
 
-    <!-- 비밀번호 변경 -->
     <div class="profile-section">
       <h2>비밀번호 변경</h2>
       
@@ -542,7 +633,6 @@ onMounted(async () => {
       </div>
     </div>
 
-    <!-- 회원 탈퇴 -->
     <div class="profile-section danger-zone">
       <h2>회원 탈퇴</h2>
       <p>탈퇴 시 모든 데이터가 삭제되며 복구할 수 없습니다.</p>
@@ -587,6 +677,18 @@ h1 {
   padding: 24px;
   margin-bottom: 24px;
   box-shadow: 0 4px 20px rgba(123, 16, 173, 0.2);
+}
+
+.recommend-section {
+  background: linear-gradient(135deg, #4a2d5e 0%, #2d1b3d 100%); /* 약간 다르게 어두운 배경 */
+  border-color: rgba(183, 148, 246, 0.4);
+}
+
+.section-desc {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  margin-top: -15px;
 }
 
 .profile-section h2 {
@@ -987,6 +1089,10 @@ h1 {
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s;
+}
+
+.recommend-card {
+  border-color: rgba(212, 175, 55, 0.4);
 }
 
 .favorite-movie-card:hover {

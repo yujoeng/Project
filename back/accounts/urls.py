@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
-from .views import CustomTokenObtainPairView, logout_view, delete_account, get_user_info
+from .views import (
+    CustomTokenObtainPairView, logout_view, delete_account, get_user_info,
+    favorite_movies, toggle_favorite_movie
+)
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
@@ -26,4 +29,14 @@ urlpatterns = [
 
     # 현재 사용자 정보 조회
     path('me/', get_user_info, name='user_info'),
+
+    # 내가 작성한 리뷰 조회
+    path('my-reviews/', views.my_reviews, name='my_reviews'),
+
+    # 내가 작성한 댓글 조회
+    path('my-comments/', views.my_comments, name='my_comments'),
+
+    # 찜한 영화 관리
+    path('favorite-movies/', favorite_movies, name='favorite_movies'),
+    path('favorite-movies/toggle/', toggle_favorite_movie, name='toggle_favorite_movie'),
 ]

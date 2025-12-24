@@ -31,3 +31,8 @@ __pycache__/
 db.sqlite3
 .env
 *.log
+
+# backup files
+*.backup
+*.bak
+*~

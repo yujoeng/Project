@@ -1,0 +1,1998 @@
+[
+{
+  "model": "movies.movie",
+  "pk": 1,
+  "fields": {
+    "tmdb_id": 83533,
+    "title": "아바타: 불과 재",
+    "original_title": "Avatar: Fire and Ash",
+    "overview": "인간들과의 전쟁으로 첫째 아들 ‘네테이얌’을 잃은 후, ‘제이크’와 ‘네이티리’는 깊은 슬픔에 빠진다. 상실에 빠진 이들 앞에 '바랑'이 이끄는 재의 부족이 등장하면서, 판도라는 더욱 큰 위험에 빠지게 되고, ‘설리’ 가족은 선택의 기로에 서게 되는데…",
+    "poster_path": "/l18o0AK18KS118tWeROOKYkF0ng.jpg",
+    "backdrop_path": "/iN41Ccw4DctL8npfmYg1j5Tr1eb.jpg",
+    "release_date": "2025-12-17",
+    "runtime": 195,
+    "vote_average": 7.356,
+    "vote_count": 535,
+    "popularity": 559.9652,
+    "genres": [
+      {
+        "id": 878,
+        "name": "SF"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 14,
+        "name": "판타지"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:38.520Z",
+    "updated_at": "2025-12-24T05:26:38.520Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 2,
+  "fields": {
+    "tmdb_id": 982843,
+    "title": "대홍수",
+    "original_title": "대홍수",
+    "overview": "대홍수가 덮친 지구 종말의 날. 물에 잠겨가는 아파트에 갇힌 연구원과 어린 아들이 탈출을 시도한다. 그 순간 도착한 중대 임무. 그녀는 인류의 운명이 걸린 과제를 끝까지 완수할 수 있을까.",
+    "poster_path": "/covyBUdRYoIoY4K5YzDEaxcZZmz.jpg",
+    "backdrop_path": "/3jMN1k8b0Ptd9eMoeftUyDGJdCh.jpg",
+    "release_date": "2025-09-18",
+    "runtime": 109,
+    "vote_average": 6.173,
+    "vote_count": 196,
+    "popularity": 482.8501,
+    "genres": [
+      {
+        "id": 878,
+        "name": "SF"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 18,
+        "name": "드라마"
+      }
+    ],
+    "original_language": "ko",
+    "created_at": "2025-12-24T05:26:39.369Z",
+    "updated_at": "2025-12-24T05:26:39.369Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 3,
+  "fields": {
+    "tmdb_id": 425274,
+    "title": "나우 유 씨 미 3",
+    "original_title": "Now You See Me: Now You Don't",
+    "overview": "한때 더러운 방식으로 돈을 모으는 재벌들을 시원하게 혼내주던 마술사기단 ‘포 호스맨’. 은퇴 후 평범한 삶을 살고 있던 그들에게 새로운 임무를 알리는 의미심장한 카드가 배달된다. 그렇게 다시 모이게 된 오리지널 ‘포 호스맨’은 자신들을 흉내 내던 신예 마술사들까지 영입하며 미션을 준비한다. 그들의 목표는 무기 밀매, 자금 세탁 등 더러운 돈에 물든 ‘하트 다이아몬드’를 훔치는 것. 하지만 다이아몬드를 훔치고, 통쾌한 쇼를 선보이려는 이들 앞에는 수많은 함정이 펼쳐지는데…",
+    "poster_path": "/dECA069mRikkghzgSBsM0cvic4F.jpg",
+    "backdrop_path": "/ufqytAlziHq5pljKByGJ8IKhtEZ.jpg",
+    "release_date": "2025-11-12",
+    "runtime": 112,
+    "vote_average": 6.47,
+    "vote_count": 598,
+    "popularity": 375.3153,
+    "genres": [
+      {
+        "id": 53,
+        "name": "스릴러"
+      },
+      {
+        "id": 80,
+        "name": "범죄"
+      },
+      {
+        "id": 9648,
+        "name": "미스터리"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:40.239Z",
+    "updated_at": "2025-12-24T05:26:40.239Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 4,
+  "fields": {
+    "tmdb_id": 1223601,
+    "title": "시수: 복수의 길",
+    "original_title": "Sisu 2",
+    "overview": "전쟁 중 가족이 잔혹하게 학살당했던 집으로 돌아온 ‘죽지 않는 사나이’(요르마 토밀라)는 그 집을 통째로 해체해 트럭에 싣고, 가족을 기리기 위해 더 안전한 곳에 다시 세우려 한다. 그러나 그의 가족을 죽인 붉은 군대 지휘관(스티븐 랭)이 복수를 끝내기 위해 돌아오면서, 나라를 가로지르는 극한의 추격전이 시작되는데... 목숨을 건 처절한 사투가 펼쳐진다.",
+    "poster_path": "/vUiAm0jbrPgbUDCOhRKsvdT0u5h.jpg",
+    "backdrop_path": "/yCatt8lmp3oRFEcOZF8KHhsiASQ.jpg",
+    "release_date": "2026-01-07",
+    "runtime": 90,
+    "vote_average": 7.594,
+    "vote_count": 256,
+    "popularity": 326.0945,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 10752,
+        "name": "전쟁"
+      }
+    ],
+    "original_language": "fi",
+    "created_at": "2025-12-24T05:26:41.135Z",
+    "updated_at": "2025-12-24T05:26:41.135Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 5,
+  "fields": {
+    "tmdb_id": 1084242,
+    "title": "주토피아 2",
+    "original_title": "Zootopia 2",
+    "overview": "미스터리한 뱀 게리가 나타난 순간, 주토피아가 다시 흔들리기 시작했다! 혼란에 빠진 도시를 구하기 위해 환상의 콤비 주디와 닉이 잠입 수사에 나서고 상상 그 이상의 진실과 위협을 마주하게 되는데...!",
+    "poster_path": "/ib6v6qUXzez1x2qIOLN7C0yJNPQ.jpg",
+    "backdrop_path": "/5h2EsPKNDdB3MAtOk9MB9Ycg9Rz.jpg",
+    "release_date": "2025-11-26",
+    "runtime": 108,
+    "vote_average": 7.662,
+    "vote_count": 710,
+    "popularity": 329.3201,
+    "genres": [
+      {
+        "id": 16,
+        "name": "애니메이션"
+      },
+      {
+        "id": 35,
+        "name": "코미디"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 10751,
+        "name": "가족"
+      },
+      {
+        "id": 9648,
+        "name": "미스터리"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:42.067Z",
+    "updated_at": "2025-12-24T05:26:42.067Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 6,
+  "fields": {
+    "tmdb_id": 1196067,
+    "title": "Worldbreaker",
+    "original_title": "Worldbreaker",
+    "overview": "",
+    "poster_path": "/7K8w6mdrJp0oaSoKWGyjSZ4Zv2z.jpg",
+    "backdrop_path": "/4mZ06VpfpAPuaUPn1SEV0brbbxe.jpg",
+    "release_date": "2025-10-30",
+    "runtime": 95,
+    "vote_average": 6.074,
+    "vote_count": 27,
+    "popularity": 219.7148,
+    "genres": [
+      {
+        "id": 878,
+        "name": "SF"
+      },
+      {
+        "id": 28,
+        "name": "액션"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:43.034Z",
+    "updated_at": "2025-12-24T05:26:43.034Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 7,
+  "fields": {
+    "tmdb_id": 1228246,
+    "title": "프레디의 피자가게 2",
+    "original_title": "Five Nights at Freddy's 2",
+    "overview": "소문과 괴담에 휘말려 폐업한 ‘프레디의 피자가게’ 본점이 수십년 만에 다시 열리고, 그곳에 오랫동안 잠들어 있던 신형 프레디와 친구들이 눈을 뜨게 된다. 안면 인식 시스템을 가진 한층 더 기괴하고 오싹해진 신형 애니메트로닉스들은 이제 피자가게 밖으로 나와 세상을 공포에 몰아넣기 시작하는데…",
+    "poster_path": "/kEmPnUUXaF9hPgDMlc0eJht5JYO.jpg",
+    "backdrop_path": "/bZlismAr366jWFiZNKzY3x3AN5X.jpg",
+    "release_date": "2025-12-03",
+    "runtime": 104,
+    "vote_average": 6.3,
+    "vote_count": 220,
+    "popularity": 249.8545,
+    "genres": [
+      {
+        "id": 27,
+        "name": "공포"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:43.924Z",
+    "updated_at": "2025-12-24T05:26:43.924Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 8,
+  "fields": {
+    "tmdb_id": 1013446,
+    "title": "리플렉션",
+    "original_title": "Reflet dans un diamant mort",
+    "overview": "남프랑스 코트 다쥐르의 고급 호텔에서 우아한 일상을 이어가는 70대 노인 존 D. 그는 음모와 약속, 갈등과 글래머로 가득한 1960년대 전 세계를 누비며 활동하던 전직 스파이다. 한가롭게 해변의 산책과 햇살을 즐기던 그의 옆방 투숙객으로 등장한 한 여성이 그의 눈길을 사로잡고, 어느 날 그녀가 갑자기 흔적도 없이 사라지면서 존은 익숙한 두려움을 느끼며 과거 속으로 돌아가게 되는데…",
+    "poster_path": "/scOBEcIfVlG890tKV5XI42t0EhU.jpg",
+    "backdrop_path": "/AePlQ3osZShJmbNj8tzQ3NoMTQF.jpg",
+    "release_date": "2025-07-07",
+    "runtime": 87,
+    "vote_average": 6.011,
+    "vote_count": 47,
+    "popularity": 239.5594,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      },
+      {
+        "id": 9648,
+        "name": "미스터리"
+      }
+    ],
+    "original_language": "fr",
+    "created_at": "2025-12-24T05:26:44.882Z",
+    "updated_at": "2025-12-24T05:26:44.882Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 9,
+  "fields": {
+    "tmdb_id": 1336189,
+    "title": "딜리버리 런",
+    "original_title": "Delivery Run",
+    "overview": "음식 배달원 한 명이 눈 덮인 미네소타 황무지에서 치명적인 추격전에 휘말린다. 알 수 없는 이유로 미친 제설차 운전사에게 쫓기게 된 그는 목숨을 위협하는 상황 속에서, 끈질긴 추적자를 홀로 따돌려야 한다.",
+    "poster_path": "/eCA5maHDlZtXNTtiLXenwnEw7tc.jpg",
+    "backdrop_path": "/hvut2slhhgJ31UNa9Df7jFfAS0x.jpg",
+    "release_date": "2025-09-10",
+    "runtime": 84,
+    "vote_average": 5.25,
+    "vote_count": 18,
+    "popularity": 211.3254,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:45.830Z",
+    "updated_at": "2025-12-24T05:26:45.830Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 10,
+  "fields": {
+    "tmdb_id": 798645,
+    "title": "더 러닝 맨",
+    "original_title": "The Running Man",
+    "overview": "실직한 가장 ‘벤 리처즈’가 거액의 상금을 위해 30일간 잔인한 추격자들로부터 살아남아야 하는 글로벌 서바이벌 프로그램에 참가하며 펼쳐지는 추격 액션 블록버스터",
+    "poster_path": "/klfSEbFOquMFjBQJ5uKAfp0rrsK.jpg",
+    "backdrop_path": "/aHj7d7wSLqrg5cjAcgHhiGr97Ih.jpg",
+    "release_date": "2025-12-10",
+    "runtime": 133,
+    "vote_average": 6.831,
+    "vote_count": 725,
+    "popularity": 165.481,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      },
+      {
+        "id": 878,
+        "name": "SF"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:46.722Z",
+    "updated_at": "2025-12-24T05:26:46.722Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 11,
+  "fields": {
+    "tmdb_id": 1195518,
+    "title": "언홀리 트리니티",
+    "original_title": "The Unholy Trinity",
+    "overview": "",
+    "poster_path": "/waU3o5qRPNA9bIC59DIsDppll11.jpg",
+    "backdrop_path": "/hyc9gq0Oq5THKak7tB7oqC2Rd6z.jpg",
+    "release_date": "2025-06-13",
+    "runtime": 95,
+    "vote_average": 6.2,
+    "vote_count": 101,
+    "popularity": 190.5957,
+    "genres": [
+      {
+        "id": 37,
+        "name": "서부"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 80,
+        "name": "범죄"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:47.691Z",
+    "updated_at": "2025-12-24T05:26:47.691Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 12,
+  "fields": {
+    "tmdb_id": 812583,
+    "title": "나이브스 아웃: 웨이크 업 데드 맨",
+    "original_title": "Wake Up Dead Man: A Knives Out Mystery",
+    "overview": "브누아 블랑이 탐정 인생을 통틀어 가장 위험한 사건으로 돌아온다.어두운 과거를 지닌 작은 마을의 성당. 그곳에서 불가사의한 범죄가 발생한다. 그러자 브누아 블랑 탐정이 신실한 젊은 신부와 함께 수사에 나선다.",
+    "poster_path": "/qFXkslzkBIihZnwyYal9WnQ9OTe.jpg",
+    "backdrop_path": "/fiRDzpcJe7qz3yIR43hdXIE3NHv.jpg",
+    "release_date": "2025-12-12",
+    "runtime": 145,
+    "vote_average": 7.205,
+    "vote_count": 1019,
+    "popularity": 170.5348,
+    "genres": [
+      {
+        "id": 53,
+        "name": "스릴러"
+      },
+      {
+        "id": 9648,
+        "name": "미스터리"
+      },
+      {
+        "id": 35,
+        "name": "코미디"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:48.678Z",
+    "updated_at": "2025-12-24T05:26:48.678Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 13,
+  "fields": {
+    "tmdb_id": 755898,
+    "title": "우주전쟁",
+    "original_title": "War of the Worlds",
+    "overview": "전설적인 동명 소설을 새롭게 재해석한 이번 작품은 거대한 침공의 서막을 알린다. 에바 롱고리아와 전설적인 래퍼이자 배우 아이스 큐브, 그리고 마이클 오닐과 이만 벤슨이 합류해, 기술과 감시, 사생활이라는 현대적 주제를 아우르는 짜릿한 우주급 모험을 선보인다.",
+    "poster_path": "/yvirUYrva23IudARHn3mMGVxWqM.jpg",
+    "backdrop_path": "/iZLqwEwUViJdSkGVjePGhxYzbDb.jpg",
+    "release_date": "2025-07-30",
+    "runtime": 145,
+    "vote_average": 4.251,
+    "vote_count": 790,
+    "popularity": 154.5233,
+    "genres": [
+      {
+        "id": 878,
+        "name": "SF"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:49.624Z",
+    "updated_at": "2025-12-24T05:26:49.624Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 14,
+  "fields": {
+    "tmdb_id": 1491902,
+    "title": "Bang: storm of bullets",
+    "original_title": "Bang: storm of bullets",
+    "overview": "",
+    "poster_path": "/8SUzKOqe2ectvhYdSnR7Vq2F3n1.jpg",
+    "backdrop_path": "/x3s2lEGNguUnQ5YH3Goq7Ud7Lcn.jpg",
+    "release_date": "2025-07-11",
+    "runtime": 0,
+    "vote_average": 6.2,
+    "vote_count": 17,
+    "popularity": 166.4193,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:50.596Z",
+    "updated_at": "2025-12-24T05:26:50.596Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 15,
+  "fields": {
+    "tmdb_id": 1589891,
+    "title": "용자들의 시간",
+    "original_title": "La hora de los valientes",
+    "overview": "사회봉사 명령을 받은 정신분석가가 배우자의 불륜으로 힘들어하는 한 요원의 심리 상담을 돕는다. 이후 두 사람은 함께 위험을 겪으며 인생의 두 번째 기회를 찾게 된다.",
+    "poster_path": "/kidywh4SgwByoR5roudemIpTx86.jpg",
+    "backdrop_path": "/gtuXARxjGdfsGFqEwggBB8zUJza.jpg",
+    "release_date": "2025-12-19",
+    "runtime": 107,
+    "vote_average": 7.635,
+    "vote_count": 26,
+    "popularity": 141.974,
+    "genres": [
+      {
+        "id": 35,
+        "name": "코미디"
+      },
+      {
+        "id": 28,
+        "name": "액션"
+      }
+    ],
+    "original_language": "es",
+    "created_at": "2025-12-24T05:26:51.551Z",
+    "updated_at": "2025-12-24T05:26:51.551Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 16,
+  "fields": {
+    "tmdb_id": 1438030,
+    "title": "Slaughterhouse 2",
+    "original_title": "Slaughterhouse 2",
+    "overview": "",
+    "poster_path": "/wkZgGYcCQIzX8zvMAHpzg4hFhLF.jpg",
+    "backdrop_path": "/vJ1z82bLSfg71sQcJ370N4TpWqf.jpg",
+    "release_date": "2024-10-23",
+    "runtime": 93,
+    "vote_average": 8.0,
+    "vote_count": 2,
+    "popularity": 130.021,
+    "genres": [
+      {
+        "id": 27,
+        "name": "공포"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:52.416Z",
+    "updated_at": "2025-12-24T05:26:52.416Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 17,
+  "fields": {
+    "tmdb_id": 1419406,
+    "title": "포풍추영",
+    "original_title": "捕风追影",
+    "overview": "첨단 감시 시스템과 삼엄한 보안망을 무력화하고, 수십억을 탈취한 정체불명의 범죄 조직. 통제 불능의 범죄에 마카오 경찰은 결국 은퇴한 전설의 범죄 추적 전문가 ‘황더중’에게 도움을 요청한다. 황더중은 신입 경찰 ‘허추궈’와 함께 최정예 감시반을 구성해, 범죄 조직의 수장 ‘푸룽성’을 추적하기 시작한다. 하지만 수사망이 조여올수록 상대의 덫과 함정은 더욱 교묘해지고, 예상치 못한 반격 속에 황더중 역시 추적당하기 시작하는데…",
+    "poster_path": "/pUCkdO40PWHdvU1GEYV6ywY7li2.jpg",
+    "backdrop_path": "/4BtL2vvEufDXDP4u6xQjjQ1Y2aT.jpg",
+    "release_date": "2025-09-20",
+    "runtime": 142,
+    "vote_average": 6.6,
+    "vote_count": 171,
+    "popularity": 126.9026,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 80,
+        "name": "범죄"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "zh",
+    "created_at": "2025-12-24T05:26:53.343Z",
+    "updated_at": "2025-12-24T05:26:53.343Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 18,
+  "fields": {
+    "tmdb_id": 533533,
+    "title": "트론: 아레스",
+    "original_title": "TRON: Ares",
+    "overview": "가상 세계에서 창조된 존재를 현실 세계로 끌어올 수 있는 시대. 그곳에서 탄생한 AI 최종 병기 아레스는 초인적인 힘과 속도, 고도 지능으로 설계되어 무한히 재생될 수 있지만 기술의 한계로 현실 세계에 단 29분만 머무를 수 있다. 그러던 중, 세계 최고의 프로그래머 이브 킴은 기술의 한계를 넘어설 해답을 발견하게 되고 아레스가 점차 통제를 벗어나 자신만의 목적을 향해 움직이기 시작하자 인류는 역사상 한 번도 경험한 적 없는 최악의 위기에 처하게 되는데…",
+    "poster_path": "/4nJcUMpWgnIPZPJ13TWKRxAdY9U.jpg",
+    "backdrop_path": "/min9ZUDZbiguTiQ7yz1Hbqk78HT.jpg",
+    "release_date": "2025-10-08",
+    "runtime": 119,
+    "vote_average": 6.574,
+    "vote_count": 807,
+    "popularity": 121.2538,
+    "genres": [
+      {
+        "id": 878,
+        "name": "SF"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 28,
+        "name": "액션"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:54.251Z",
+    "updated_at": "2025-12-24T05:26:54.251Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 19,
+  "fields": {
+    "tmdb_id": 1387382,
+    "title": "Hunting Season",
+    "original_title": "Hunting Season",
+    "overview": "",
+    "poster_path": "/cbryTyaWdqrKpQCw6K7zm2jrB5v.jpg",
+    "backdrop_path": "/eJ0HooOOD1uzI39CfOQNWIiWKlJ.jpg",
+    "release_date": "2025-12-05",
+    "runtime": 93,
+    "vote_average": 6.9,
+    "vote_count": 56,
+    "popularity": 112.4496,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 18,
+        "name": "드라마"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:55.226Z",
+    "updated_at": "2025-12-24T05:26:55.226Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 20,
+  "fields": {
+    "tmdb_id": 76600,
+    "title": "아바타: 물의 길",
+    "original_title": "Avatar: The Way of Water",
+    "overview": "판도라 행성에서 제이크 설리와 네이티리가 이룬 가족이 겪게 되는 무자비한 위협과 살아남기 위해 떠나야 하는 긴 여정과 전투, 그리고 견뎌내야 할 상처에 대한 이야기를 그렸다. 살아남기 위해 설리 가족이 숲에서 바다로 터전을 옮기면서 겪게 되는 화합의 과정, 그리고 곳곳에서 도사리는 새로운 위협까지 역경 속에서 더 아름답게 펼쳐진다.",
+    "poster_path": "/u2aVXft5GLBQnjzWVNda7sdDpdu.jpg",
+    "backdrop_path": "/cd8YDn7M0lfaHhZdU6MvCDxPalP.jpg",
+    "release_date": "2022-12-14",
+    "runtime": 192,
+    "vote_average": 7.607,
+    "vote_count": 13248,
+    "popularity": 114.6909,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 878,
+        "name": "SF"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:56.173Z",
+    "updated_at": "2025-12-24T05:26:56.173Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 21,
+  "fields": {
+    "tmdb_id": 19995,
+    "title": "아바타",
+    "original_title": "Avatar",
+    "overview": "가까운 미래, 지구는 에너지 고갈 문제를 해결하기 위해 머나먼 행성 판도라에서 대체 자원을 채굴하기 시작한다. 하지만 판도라의 독성을 지닌 대기로 인해 자원 획득에 어려움을 겪게 된 인류는 판도라의 토착민 나비의 외형에 인간의 의식을 주입, 원격 조종이 가능한 새로운 생명체를 탄생시키는 프로그램을 개발한다. 한편 하반신이 마비된 전직 해병대원 제이크 설리는 아바타 프로그램에 참가할 것을 제안받는다. 그 곳에서 자신의 아바타를 통해 자유롭게 걸을 수 있게 된 제이크는 자원 채굴을 막으려는 나비의 무리에 침투하라는 임무를 부여받는데...",
+    "poster_path": "/m5lCha2XcbDowDoYHPc0DTNaCPU.jpg",
+    "backdrop_path": "/7JNzw1tSZZEgsBw6lu0VfO2X2Ef.jpg",
+    "release_date": "2009-12-17",
+    "runtime": 162,
+    "vote_average": 7.597,
+    "vote_count": 33010,
+    "popularity": 111.795,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 14,
+        "name": "판타지"
+      },
+      {
+        "id": 878,
+        "name": "SF"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:57.920Z",
+    "updated_at": "2025-12-24T05:26:57.920Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 22,
+  "fields": {
+    "tmdb_id": 1218925,
+    "title": "극장판 체인소 맨:  레제편",
+    "original_title": "劇場版 チェンソーマン レゼ篇",
+    "overview": "데블 헌터로 일하는 소년 ‘덴지’는 조직의 배신으로 죽음에 내몰린 순간 전기톱 악마견 ‘포치타’와의 계약으로 하나로 합쳐져 누구도 막을 수 없는 존재 ‘체인소 맨’으로 다시 태어난다. 악마와 사냥꾼, 그리고 정체불명의 적들이 얽힌 잔혹한 전쟁 속에서 ‘레제’라는 이름의 미스터리한 소녀가 ‘덴지’ 앞에 나타나는데… ‘덴지’는 사랑이라는 감정에 이끌려 지금껏 가장 위험한 배틀에 몸을 던진다!",
+    "poster_path": "/oTn0PoR8gSMpMqJaT2pUtkkN0Ia.jpg",
+    "backdrop_path": "/kfXgo2rMF1A19celCwLyQ4Xwpf8.jpg",
+    "release_date": "2025-09-24",
+    "runtime": 100,
+    "vote_average": 8.293,
+    "vote_count": 470,
+    "popularity": 100.138,
+    "genres": [
+      {
+        "id": 16,
+        "name": "애니메이션"
+      },
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 10749,
+        "name": "로맨스"
+      },
+      {
+        "id": 14,
+        "name": "판타지"
+      }
+    ],
+    "original_language": "ja",
+    "created_at": "2025-12-24T05:26:58.844Z",
+    "updated_at": "2025-12-24T05:26:58.844Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 23,
+  "fields": {
+    "tmdb_id": 1162858,
+    "title": "디 아더",
+    "original_title": "The Other",
+    "overview": "아이를 가질 수 없던 한 부부는 비극적인 어린 시절의 생존자인 어린 고아와 함께 가족을 꾸리려 한다. 하지만 그들의 사랑스러운 행동은 공포로 변한다. 아이의 과거 속 폭력이 되살아나 새로운 가족을 파괴하려 한다는 것을 깨달았을 때였다.",
+    "poster_path": "/kE6FV8Lc9Aqir6OlgaNgnbFcy9E.jpg",
+    "backdrop_path": "/k3xS5HuixDQXRFg4eX9vLohuGjP.jpg",
+    "release_date": "2025-04-26",
+    "runtime": 99,
+    "vote_average": 5.671,
+    "vote_count": 38,
+    "popularity": 91.9191,
+    "genres": [
+      {
+        "id": 27,
+        "name": "공포"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:26:59.792Z",
+    "updated_at": "2025-12-24T05:26:59.792Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 24,
+  "fields": {
+    "tmdb_id": 1180831,
+    "title": "트롤의 습격 2",
+    "original_title": "Troll 2",
+    "overview": "또다시 위험한 트롤이 깨어나 나라 전역을 초토화한다. 이에 노라와 안드레아스, 크리스 소령은 그 어느 때보다 위험천만한 임무에 뛰어드는데.",
+    "poster_path": "/E5eqWkxgKeodl215pspacSucSJ.jpg",
+    "backdrop_path": "/lZYMXx74pWmbj5Q5jp1QaMvmuuR.jpg",
+    "release_date": "2025-12-01",
+    "runtime": 105,
+    "vote_average": 6.6,
+    "vote_count": 300,
+    "popularity": 89.2163,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 14,
+        "name": "판타지"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "no",
+    "created_at": "2025-12-24T05:27:00.726Z",
+    "updated_at": "2025-12-24T05:27:00.726Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 25,
+  "fields": {
+    "tmdb_id": 1242898,
+    "title": "프레데터: 죽음의 땅",
+    "original_title": "Predator: Badlands",
+    "overview": "프레데터로서 존재를 증명하기 위해 우주에서 가장 위험한 행성으로 첫 사냥에 나선 덱. 죽음의 땅에 도사린 모든 것으로부터 공격을 받던 순간, 휴머노이드 티아를 만난다. 최상위 포식자 칼리스크에 맞서게 된 둘은 생존과 각자의 목적을 위해 극한의 사투를 벌이게 되는데…",
+    "poster_path": "/8lpCbwbYh9SSzCFsHDndZHKrcD4.jpg",
+    "backdrop_path": "/ebyxeBh56QNXxSJgTnmz7fXAlwk.jpg",
+    "release_date": "2025-11-05",
+    "runtime": 107,
+    "vote_average": 7.3,
+    "vote_count": 671,
+    "popularity": 96.0706,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 878,
+        "name": "SF"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:01.713Z",
+    "updated_at": "2025-12-24T05:27:01.713Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 26,
+  "fields": {
+    "tmdb_id": 1311031,
+    "title": "극장판 귀멸의 칼날: 무한성편",
+    "original_title": "劇場版「鬼滅の刃」無限城編 第一章 猗窩座再来",
+    "overview": "혈귀로 변해버린 여동생 네즈코를 인간으로 되돌리기 위해 혈귀를 사냥하는 조직인 《귀살대》에 입대한 카마도 탄지로. 입대 후 동료인 아가츠마 젠이츠, 하시비라 이노스케와 함께 많은 혈귀와 싸우고, 성장하면서 세 사람의 우정과 유대는 깊어진다. 탄지로는 《귀살대》 최고위 검사인 《주》와도 함께 싸웠다. 「무한열차」에서는 염주・렌고쿠 쿄쥬로, 「유곽」에서는 음주・우즈이 텐겐, 「도공 마을」에서는 하주・토키토 무이치로, 연주・칸로지 미츠리와 함께 혈귀를 상대로 격렬한 전투를 벌였다. 그 후 다가올 혈귀와의 결전에 대비해 귀살대원들과 함께 《주》가 주도하는 합동 강화 훈련에 참가해 훈련을 받던 도중 《귀살대》의 본부인 우부야시키 저택에 나타난 키부츠지 무잔. 어르신의 위기에 달려온 《주》들과 탄지로였지만, 무잔의 술수로 의문의 공간으로 떨어지고 말았는데. 탄지로 일행이 떨어진 곳, 그곳은 혈귀의 본거지 《무한성》─ “귀살대”와 “혈귀”의 최종 결전의 포문이 열린다.",
+    "poster_path": "/m6Dho6hDCcL5KI8mOQNemZAedFI.jpg",
+    "backdrop_path": "/1RgPyOhN4DRs225BGTlHJqCudII.jpg",
+    "release_date": "2025-08-22",
+    "runtime": 155,
+    "vote_average": 7.634,
+    "vote_count": 610,
+    "popularity": 90.872,
+    "genres": [
+      {
+        "id": 16,
+        "name": "애니메이션"
+      },
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 14,
+        "name": "판타지"
+      }
+    ],
+    "original_language": "ja",
+    "created_at": "2025-12-24T05:27:02.656Z",
+    "updated_at": "2025-12-24T05:27:02.656Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 27,
+  "fields": {
+    "tmdb_id": 1149167,
+    "title": "캐시 아웃 2",
+    "original_title": "High Rollers",
+    "overview": "은퇴한 은행털이범들이 납치된 동료를 구출하는 조건으로 카지노 금고 절도에 나서게 되는 이야기를 그린 극영화",
+    "poster_path": "/h4rwNz4HxVfSPXVpB39zGWoKmOV.jpg",
+    "backdrop_path": "/me3SisKfnxwBP69aOVKAVMw9vDM.jpg",
+    "release_date": "2025-07-25",
+    "runtime": 101,
+    "vote_average": 6.608,
+    "vote_count": 88,
+    "popularity": 78.6243,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 80,
+        "name": "범죄"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:03.609Z",
+    "updated_at": "2025-12-24T05:27:03.609Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 28,
+  "fields": {
+    "tmdb_id": 1217602,
+    "title": "London Calling",
+    "original_title": "London Calling",
+    "overview": "",
+    "poster_path": "/cpQ4VxBJO7vGV3IUdKzSNf4tH9V.jpg",
+    "backdrop_path": "/1dqFuNiutgBdNF9d5QOQBWHHvft.jpg",
+    "release_date": "2025-09-18",
+    "runtime": 114,
+    "vote_average": 7.0,
+    "vote_count": 57,
+    "popularity": 73.4136,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 80,
+        "name": "범죄"
+      },
+      {
+        "id": 35,
+        "name": "코미디"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:04.609Z",
+    "updated_at": "2025-12-24T05:27:04.609Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 29,
+  "fields": {
+    "tmdb_id": 1083637,
+    "title": "ಕಾಂತಾರ: ಅಧ್ಯಾಯ - ೧",
+    "original_title": "ಕಾಂತಾರ: ಅಧ್ಯಾಯ - ೧",
+    "overview": "",
+    "poster_path": "/ehQPboTPaIMkMUOoNOh8e7pZ5Rp.jpg",
+    "backdrop_path": "/w57nxiBIODAYHLRs1xmrCY9zEFe.jpg",
+    "release_date": "2025-10-01",
+    "runtime": 165,
+    "vote_average": 7.038,
+    "vote_count": 53,
+    "popularity": 77.5767,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 18,
+        "name": "드라마"
+      },
+      {
+        "id": 14,
+        "name": "판타지"
+      }
+    ],
+    "original_language": "kn",
+    "created_at": "2025-12-24T05:27:05.582Z",
+    "updated_at": "2025-12-24T05:27:05.582Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 30,
+  "fields": {
+    "tmdb_id": 1468057,
+    "title": "가타오: 암흑가의 형제들",
+    "original_title": "角頭－鬥陣欸",
+    "overview": "아버지가 촉발한 구세력과 신세력 사이의 치열한 영역 다툼. 이제 그 아들이 참전해 피로 물든 대만 범죄 세계 장악에 나선다.",
+    "poster_path": "/eoUcppppVNj8BkgBDkZTv82x3tx.jpg",
+    "backdrop_path": "/tm87rqU4zCiDIJKJDHmmhFSjXiX.jpg",
+    "release_date": "2025-12-21",
+    "runtime": 0,
+    "vote_average": 6.2,
+    "vote_count": 5,
+    "popularity": 82.504,
+    "genres": [
+      {
+        "id": 80,
+        "name": "범죄"
+      },
+      {
+        "id": 28,
+        "name": "액션"
+      }
+    ],
+    "original_language": "zh",
+    "created_at": "2025-12-24T05:27:06.506Z",
+    "updated_at": "2025-12-24T05:27:06.506Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 31,
+  "fields": {
+    "tmdb_id": 7451,
+    "title": "트리플 엑스",
+    "original_title": "xXx",
+    "overview": "싸이렌이 온 거리를 울려 퍼지며 요란한 추격씬이 벌어지는 도중 한 녀석이 콜벳를 몰고 다리를 돌진, 200미터 높이에서 자동차 번지를 시도한다. 짜릿한 곡예를 선보인 후 낙하산을 펴고 유유히 사라지는 녀석의 이름은 '젠더 케이지'. 인터넷에 생방송된 이 장면은 전세계 네티즌들에게 열렬한 환호를 받는다. 또 한 번의 멋진 프로젝트로 영웅 대접을 받는 젠더 케이지. 그러나 파티가 무르익을 무렵, 갑자기 들이닥친 특수부대는 그에게 신경 안정제를 쏜 후 잠들게 한다. 깨어난 곳은 알 수 없는 레스토랑. 어리둥절한 그 곳은 갑자기 강도들의 침입장으로 돌변하고, 단숨에 상황을 정리해버린 그에게 기븐스가 축하 인사를 전한다. 미국 비밀첩보국 NSA의 1차 테스트를 통과한 것. 이후 또 다시 잠에서 깨어난 곳은 비행기 안. 2번째 테스트로 콜럼비아 마약 밀매상의 아지트에 던져진 젠더 케이지. 때마침 콜럼비아 정부와 마약상들의 충돌로 아수라장이 된 그곳에서 살아남기 위한 치열한 전쟁이 펼쳐지는데...  상황종료 후 유유히 나타난 기븐스는 NSA의 테스트를 유일하게 통과한 그에게 비밀요원이 되어줄 것을 부탁한다. 단 그렇지 않을 경우는 감옥행뿐이라는 단서를 둔다. 젠더 케이지의 코드명은 트리플 X. 첫번째 임무지는 비밀요원의 무덤이라는 별칭을 가지고 있는 도시 프라하. 이제 얼떨결에 비밀요원이 되어버린 트리플 X의 위험한 여정이 시작되는데.",
+    "poster_path": "/ysmsesGYF83VZXSvkG8ZdNNCKAz.jpg",
+    "backdrop_path": "/2OHa6ukEq3Hce7Pc2kvu8wkmMFY.jpg",
+    "release_date": "2002-10-01",
+    "runtime": 124,
+    "vote_average": 5.976,
+    "vote_count": 4699,
+    "popularity": 79.1846,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      },
+      {
+        "id": 80,
+        "name": "범죄"
+      },
+      {
+        "id": 18,
+        "name": "드라마"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:07.469Z",
+    "updated_at": "2025-12-24T05:27:07.469Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 32,
+  "fields": {
+    "tmdb_id": 152760,
+    "title": "모뉴먼츠 맨: 세기의 작전",
+    "original_title": "The Monuments Men",
+    "overview": "2차 세계대전, 히틀러에 의해 세기의 걸작을 잃을 절체절명의 위기 속, 미술 역사학자 ‘프랭크’는 이를 막기 위해 예술품 전담부대 ‘모뉴먼츠 맨’ 결성을 주도한다. 예술품을 지키는 것이 목숨을 걸 만큼 가치 있는 것인지에 대한 우려와 반대에도 불구하고, 끈질긴 설득 끝에 마침내 ‘모뉴먼츠 맨’ 결성을 허가 받은 ‘프랭크’. 미술관 관장, 건축가, 조각가, 미술품 거래상, 예술품 감정가 등 뜻을 함께 한 대원들로 구성된 ‘모뉴먼츠 맨’은 나치로부터 5백 만점 이상의 도난 예술품을 지키기 위해 전쟁터 한 가운데로 나선다.  하지만 전투 경력 전무, 예술품 보존을 위해 폭격마저 저지하려는 그들은 오히려 전쟁의 방해꾼이라는 오명을 쓰게 되고 패망한다면 모든 것을 파괴하라는 히틀러의 지침으로 상황은 더욱 악화되어 간다. 자신의 목숨조차 지키기 어려운 상황과 누구에게도 인정받지 못하는 악조건 속 모뉴먼츠 맨은 도난 예술품의 은닉처를 찾아 최전선으로 향하는데...",
+    "poster_path": "/1qGKv7j4QQnnqLn02UIva6JLXFm.jpg",
+    "backdrop_path": "/uLBJtONQwHoGc61vbIfoC6a9gUp.jpg",
+    "release_date": "2014-02-27",
+    "runtime": 118,
+    "vote_average": 6.063,
+    "vote_count": 3730,
+    "popularity": 55.1394,
+    "genres": [
+      {
+        "id": 10752,
+        "name": "전쟁"
+      },
+      {
+        "id": 18,
+        "name": "드라마"
+      },
+      {
+        "id": 36,
+        "name": "역사"
+      },
+      {
+        "id": 28,
+        "name": "액션"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:08.437Z",
+    "updated_at": "2025-12-24T05:27:08.437Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 33,
+  "fields": {
+    "tmdb_id": 1062722,
+    "title": "프랑켄슈타인",
+    "original_title": "Frankenstein",
+    "overview": "과학자 빅터 프랑켄슈타인과 그의 손에서 탄생한 괴물이 펼치는 이야기. 고전이 된 메리 셸리의 소설을 오스카 수상 감독 기예르모 델토로가 영화화했다.",
+    "poster_path": "/vSMWJkBTEfa7kFxHizSz4uJNVlf.jpg",
+    "backdrop_path": "/hpXBJxLD2SEf8l2CspmSeiHrBKX.jpg",
+    "release_date": "2025-10-22",
+    "runtime": 150,
+    "vote_average": 7.718,
+    "vote_count": 2347,
+    "popularity": 76.6845,
+    "genres": [
+      {
+        "id": 18,
+        "name": "드라마"
+      },
+      {
+        "id": 14,
+        "name": "판타지"
+      },
+      {
+        "id": 27,
+        "name": "공포"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:09.397Z",
+    "updated_at": "2025-12-24T05:27:09.397Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 34,
+  "fields": {
+    "tmdb_id": 1368166,
+    "title": "하우스메이드",
+    "original_title": "The Housemaid",
+    "overview": "과거를 숨긴 채 완벽한 저택의 가정부로 들어간 밀리가 이상한 행동을 보이는 아내 니나와 그런 아내를 이해하는 모범적인 남편 앤드루와 얽히며 닫힌 문 뒤의 거짓과 마주하게 되는 월드 베스트셀러 원작의 고자극 미스터리 스릴러",
+    "poster_path": "/fYQGmQ3sS4C0Wy5m5o6tEUBfcZu.jpg",
+    "backdrop_path": "/ae0p8SqtMNNxbmbUHyCaE20D2aQ.jpg",
+    "release_date": "2025-12-18",
+    "runtime": 131,
+    "vote_average": 8.125,
+    "vote_count": 33,
+    "popularity": 80.5845,
+    "genres": [
+      {
+        "id": 9648,
+        "name": "미스터리"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:10.371Z",
+    "updated_at": "2025-12-24T05:27:10.371Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 35,
+  "fields": {
+    "tmdb_id": 1033462,
+    "title": "749局",
+    "original_title": "749局",
+    "overview": "",
+    "poster_path": "/xW640PVBXLlzhrkQnAcvWNsehIO.jpg",
+    "backdrop_path": "/lf8IZ86ajGpgbuyHCZrXUeAMmvy.jpg",
+    "release_date": "2024-10-01",
+    "runtime": 123,
+    "vote_average": 6.292,
+    "vote_count": 65,
+    "popularity": 71.6192,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 878,
+        "name": "SF"
+      }
+    ],
+    "original_language": "zh",
+    "created_at": "2025-12-24T05:27:11.270Z",
+    "updated_at": "2025-12-24T05:27:11.270Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 36,
+  "fields": {
+    "tmdb_id": 980477,
+    "title": "나타지마동요해",
+    "original_title": "哪吒之魔童闹海",
+    "overview": "\"그가 돌아왔다, 더욱 강력해진 영웅의 전설\"  천계의 시련 이후, 혼은 유지했으나 육신이 소멸 위기에 처한 나타와 오병. 태을진인은 일곱 빛깔의 보련으로 그들의 육신을 재건하려 하지만, 과정은 순탄치 않다. 신공표는 심해에 갇혀 있던 사룡왕을 해방시키고, 동해의 용왕 오광은 \"내가 전쟁에 나서면, 천당관은 남김없이 파괴될 것이다\"라고 선언한다. 나타는 천당관을 지키기 위해 사해의 용왕들과 맞서 싸우게 되는데...",
+    "poster_path": "/bTMf8M7rZ21fChGdtsZtJj4Dfqh.jpg",
+    "backdrop_path": "/8btfz81bOJ2lC7cujYBTw03wzg3.jpg",
+    "release_date": "2025-01-29",
+    "runtime": 144,
+    "vote_average": 8.088,
+    "vote_count": 515,
+    "popularity": 71.2735,
+    "genres": [
+      {
+        "id": 16,
+        "name": "애니메이션"
+      },
+      {
+        "id": 14,
+        "name": "판타지"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 28,
+        "name": "액션"
+      }
+    ],
+    "original_language": "zh",
+    "created_at": "2025-12-24T05:27:12.240Z",
+    "updated_at": "2025-12-24T05:27:12.240Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 37,
+  "fields": {
+    "tmdb_id": 1291608,
+    "title": "धुरंधर",
+    "original_title": "धुरंधर",
+    "overview": "",
+    "poster_path": "/8FHOtUpNIk5ZPEay2N2EY5lrxkv.jpg",
+    "backdrop_path": "/yRYgvo2crAeHzqKwXMVtEaDx7Qq.jpg",
+    "release_date": "2025-12-05",
+    "runtime": 214,
+    "vote_average": 6.3,
+    "vote_count": 106,
+    "popularity": 70.9732,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "hi",
+    "created_at": "2025-12-24T05:27:13.172Z",
+    "updated_at": "2025-12-24T05:27:13.172Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 38,
+  "fields": {
+    "tmdb_id": 1054867,
+    "title": "원 배틀 애프터 어나더",
+    "original_title": "One Battle After Another",
+    "overview": "자유를 외치는 혁명가 밥 퍼거슨. 16년이 흐른 뒤, 후유증으로 모든 걸 내려놓고 무너진 삶을 살고 있다. 그에게 남은 유일한 희망은 세상 누구보다 소중한 딸 윌라뿐. 자신의 몸도, 딸과의 관계도 엉망진창인 삶을 살아가던 중 과거의 숙적이었던 스티븐 J. 록조가 딸을 납치한다. 딸을 찾기 위해서 옛 동료들의 도움이 절실하지만, 오래된 동료들은 만나기조차 쉽지 않은데…",
+    "poster_path": "/mXhV72UP7UlRwZSpxnjXl8FvWTc.jpg",
+    "backdrop_path": "/zpEWFNqoN8Qg1SzMMHmaGyOBTdW.jpg",
+    "release_date": "2025-10-01",
+    "runtime": 162,
+    "vote_average": 7.483,
+    "vote_count": 1990,
+    "popularity": 74.8135,
+    "genres": [
+      {
+        "id": 53,
+        "name": "스릴러"
+      },
+      {
+        "id": 80,
+        "name": "범죄"
+      },
+      {
+        "id": 28,
+        "name": "액션"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:14.142Z",
+    "updated_at": "2025-12-24T05:27:14.142Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 39,
+  "fields": {
+    "tmdb_id": 1246049,
+    "title": "드라큘라: 어 러브 테일",
+    "original_title": "Dracula",
+    "overview": "거장 뤽 베송이 선사하는 전설의 화려한 부활, 그 태초의 이야기.\r 15세기, 신을 위해 칼을 들고 전장을 누비던 왕자 '블라드'. 하지만 신은 그의 헌신에 대한 대가로 가장 사랑하는 여인을 죽음으로 몰아넣는다. 찢어질 듯한 슬픔과 배신감에 사로잡힌 그는 십자가를 부수고 신을 저주하며, 영원히 죽지 못하는 어둠의 길을 선택한다.\r 피를 마시며 영겁의 시간을 견뎌온 괴물, 드라큘라. 세기를 넘어 다시금 그에게 운명처럼 찾아온 사랑의 흔적은 그를 광기와 열망의 소용돌이로 몰아넣는다.\r \"내 사랑을 앗아간 신에게 복수하고, 영원 속에서 당신을 다시 찾으리라.\"\r 칸 영화제 남우주연상 수상자 케일럽 랜드리 존스와 크리스토프 왈츠의 압도적인 연기, 그리고 뤽 베송 감독 특유의 미학적인 비주얼이 만나 탄생한 고딕 판타지. 공포를 넘어선 비극적이고도 아름다운 핏빛 서사시가 당신의 심장을 조여온다.\r 괴물이 될 수밖에 없었던 한 남자의 처절한 사랑, 그 거대한 비극의 막이 오른다.",
+    "poster_path": "/1Zvbvt6EE6O292XMNxV0Cd5Y4jD.jpg",
+    "backdrop_path": "/qLAMT52DRM3vzqYtcRJ4hBAOYgd.jpg",
+    "release_date": "2025-07-30",
+    "runtime": 130,
+    "vote_average": 7.119,
+    "vote_count": 650,
+    "popularity": 70.1904,
+    "genres": [
+      {
+        "id": 27,
+        "name": "공포"
+      },
+      {
+        "id": 14,
+        "name": "판타지"
+      },
+      {
+        "id": 10749,
+        "name": "로맨스"
+      }
+    ],
+    "original_language": "fr",
+    "created_at": "2025-12-24T05:27:15.123Z",
+    "updated_at": "2025-12-24T05:27:15.123Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 40,
+  "fields": {
+    "tmdb_id": 1422096,
+    "title": "굿 보이",
+    "original_title": "Good Boy",
+    "overview": "인간 친구 토드가 며칠 전부터 이상하다. 여기서 토드를 지킬 수 있는 건 나 밖에 없다. 우리의 세계가 무너지지 않도록 내가 나서야 한다.",
+    "poster_path": "/t4HhBZDq9Wjxrm1iKZOwZnyJPFy.jpg",
+    "backdrop_path": "/mPtPJzBkwksUoMEKpkZqxBrlKpZ.jpg",
+    "release_date": "2025-10-22",
+    "runtime": 74,
+    "vote_average": 6.76,
+    "vote_count": 392,
+    "popularity": 63.2047,
+    "genres": [
+      {
+        "id": 27,
+        "name": "공포"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:16.070Z",
+    "updated_at": "2025-12-24T05:27:16.070Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 41,
+  "fields": {
+    "tmdb_id": 269149,
+    "title": "주토피아",
+    "original_title": "Zootopia",
+    "overview": "어릴 적부터 경찰이 꿈이었던 토끼 주디 홉스는 주변의 만류에도 불구하고 경찰학교에 들어가 당당히 수석으로 졸업한다. 온갖 동물들이 모여 살며 교양 있고 세련된 라이프 스타일을 주도하는 대도시 주토피아에 자원한 주디는 의욕을 안고 출근하지만, 상사는 작은 토끼라는 이유로 주차관리 같은 소일거리만 시킨다. 따분하게 업무를 보던 주디는 아이스크림 불법 판매를 일삼는 사기꾼 여우 닉 와일드를 알게 되고, 그와 함께  48시간 안에 주토피아에서 벌어지고 있는 연쇄 실종사건을 추적해야만 하는데...",
+    "poster_path": "/fZcab1yiKXsjx3S8D4KRHZsnMGC.jpg",
+    "backdrop_path": "/9tOkjBEiiGcaClgJFtwocStZvIT.jpg",
+    "release_date": "2016-02-17",
+    "runtime": 108,
+    "vote_average": 7.757,
+    "vote_count": 17333,
+    "popularity": 64.4071,
+    "genres": [
+      {
+        "id": 16,
+        "name": "애니메이션"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 10751,
+        "name": "가족"
+      },
+      {
+        "id": 35,
+        "name": "코미디"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:17.867Z",
+    "updated_at": "2025-12-24T05:27:17.867Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 42,
+  "fields": {
+    "tmdb_id": 1119090,
+    "title": "프랑켈다",
+    "original_title": "Soy Frankelda",
+    "overview": "어릴 적부터 어둡고 공포스러운 이야기만 써온 프란치스카 앞에 어느 날 헤르네발 왕자가 나타난다. 그의 설명에 따르면 두려움이라는 감정으로 유지되는 왕국이 존폐 위기에 처했다고 한다. 이어 호러 작가로서 프란치스카의 힘이 절실하다는 말과 함께 그를 무의식 세계로 초대한다.",
+    "poster_path": "/rh3HNzV7o8ouH4NnCuL76OFPFBF.jpg",
+    "backdrop_path": "/pZr3484MENVj3m7toTUk7Cw4bnW.jpg",
+    "release_date": "2025-10-25",
+    "runtime": 113,
+    "vote_average": 8.671,
+    "vote_count": 35,
+    "popularity": 60.514,
+    "genres": [
+      {
+        "id": 16,
+        "name": "애니메이션"
+      },
+      {
+        "id": 10751,
+        "name": "가족"
+      },
+      {
+        "id": 14,
+        "name": "판타지"
+      },
+      {
+        "id": 27,
+        "name": "공포"
+      }
+    ],
+    "original_language": "es",
+    "created_at": "2025-12-24T05:27:18.847Z",
+    "updated_at": "2025-12-24T05:27:18.847Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 43,
+  "fields": {
+    "tmdb_id": 803796,
+    "title": "케이팝 데몬 헌터스",
+    "original_title": "KPop Demon Hunters",
+    "overview": "케이팝 슈퍼스타 루미, 미라, 조이. 매진을 기록하는 대형 스타디움 공연이 없을 때면 이들은 또 다른 활동에 나선다. 바로 비밀 능력을 이용해 팬들을 초자연적 위협으로부터 보호하는 것.",
+    "poster_path": "/91sO99VNo1IxzI1NcOhPRaWBE5N.jpg",
+    "backdrop_path": "/w3Bi0wygeFQctn6AqFTwhGNXRwL.jpg",
+    "release_date": "2025-10-31",
+    "runtime": 96,
+    "vote_average": 8.181,
+    "vote_count": 2072,
+    "popularity": 66.2629,
+    "genres": [
+      {
+        "id": 14,
+        "name": "판타지"
+      },
+      {
+        "id": 10402,
+        "name": "음악"
+      },
+      {
+        "id": 35,
+        "name": "코미디"
+      },
+      {
+        "id": 16,
+        "name": "애니메이션"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:19.801Z",
+    "updated_at": "2025-12-24T05:27:19.801Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 44,
+  "fields": {
+    "tmdb_id": 1539104,
+    "title": "극장판 주술회전: 시부야사변 X 사멸회유",
+    "original_title": "劇場版 呪術廻戦「渋谷事変 特別編集版」×「死滅回游 先行上映」",
+    "overview": "2018년 10월 31일 시부야 역 주변에 갑자기 ‘장막’이 내려지고, 다수의 일반인이 갇히게 된다. 그곳에 홀로 뛰어든 현대 최강의 주술사, 고죠 사토루. 그러나 그곳에는 고죠의 봉인을 꾀하는 주저사·주령들이 기다리고 있었다. 시부야에 집결하는 이타도리 유지를 비롯한 수많은 주술사들. 전례 없는 대규모 주술전 「시부야사변」이 시작된다—. 그리고 싸움은, 최악의 주술사 카모 노리토시가 꾸민 데스 게임 「사멸회유」로 이어진다. 「시부야사변」을 거쳐, 마굴로 변한 전국 10개의 결계(콜로니). 대혼란의 한가운데, 이타도리의 사형 집행인으로 특급 주술사 옷코츠 유타가 나타난다. 절망 속에서도 싸움을 계속하는 이타도리. 무정하게도 칼날을 겨누는 옷코츠. 가속해가는 저주의 혼돈. 같은 스승을 둔 이타도리와 옷코츠, 두 사람의 사투가 시작된다——.",
+    "poster_path": "/ifK2v7oQQrgqrmDu7sr1TgoAPT9.jpg",
+    "backdrop_path": "/gtKglOSEq3d4MgQE4VsrT1sRkd0.jpg",
+    "release_date": "2025-12-03",
+    "runtime": 88,
+    "vote_average": 5.3,
+    "vote_count": 68,
+    "popularity": 64.2848,
+    "genres": [
+      {
+        "id": 16,
+        "name": "애니메이션"
+      },
+      {
+        "id": 28,
+        "name": "액션"
+      }
+    ],
+    "original_language": "ja",
+    "created_at": "2025-12-24T05:27:20.753Z",
+    "updated_at": "2025-12-24T05:27:20.753Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 45,
+  "fields": {
+    "tmdb_id": 1448560,
+    "title": "Wildcat",
+    "original_title": "Wildcat",
+    "overview": "",
+    "poster_path": "/h893ImjM6Fsv5DFhKJdlZFZIJno.jpg",
+    "backdrop_path": "/pAyImoslSnpMgjRwhaS5ZEdl8UI.jpg",
+    "release_date": "2025-11-19",
+    "runtime": 99,
+    "vote_average": 6.3,
+    "vote_count": 51,
+    "popularity": 57.84,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      },
+      {
+        "id": 80,
+        "name": "범죄"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:21.677Z",
+    "updated_at": "2025-12-24T05:27:21.677Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 46,
+  "fields": {
+    "tmdb_id": 1379963,
+    "title": "상냥하게 말해줘",
+    "original_title": "Dímelo bajito",
+    "overview": "카밀라의 인생은 완벽하다. 공부, 친구 관계, 평판까지... 하지만 7년 동안 사라졌던 이웃 디 비앙코 형제가 갑자기 돌아왔다. 첫 키스 상대 티아고와 절친이었던 테일러. 둘의 귀환으로 카미의 세계는 완전히 흔들린다. 세 사람은 과거의 상처를 극복할 수 있을까? 아니면 또다시 모든 게 엉망이 돼 버릴까?",
+    "poster_path": "/nQmpQaCLwxUGeYkTGo5U8aCY91U.jpg",
+    "backdrop_path": "/rtv6da2U8poERiAZSAbCOePXzql.jpg",
+    "release_date": "2025-12-11",
+    "runtime": 119,
+    "vote_average": 5.973,
+    "vote_count": 56,
+    "popularity": 53.3585,
+    "genres": [
+      {
+        "id": 10749,
+        "name": "로맨스"
+      },
+      {
+        "id": 18,
+        "name": "드라마"
+      }
+    ],
+    "original_language": "es",
+    "created_at": "2025-12-24T05:27:22.697Z",
+    "updated_at": "2025-12-24T05:27:22.697Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 47,
+  "fields": {
+    "tmdb_id": 346364,
+    "title": "그것",
+    "original_title": "It",
+    "overview": "살인과 실종사건이 이상하게 많이 생기는 데리라는 마을, 비 오는 어느 날 종이배를 들고 나간 동생이 사라졌다.  형 빌은 ‘루저 클럽’ 친구들과 함께 동생을 찾아 나서고, 27년마다 가장 무서워하는 것의 모습을 한 채 아이들을 잡아먹는다는 ‘그것’이 빨간 풍선을 든 삐에로의 모습으로 그들 앞에 나타나는데…  빌과 친구들은 공포를 이겨내고 ‘그것’에 맞서 동생과 사라진 아이들을 찾을 수 있을까?",
+    "poster_path": "/nlZKIOeoSWwrRcrppoIbkfOGZ6J.jpg",
+    "backdrop_path": "/qVGpxnjrGlHaSTCqTQI6viBDSfp.jpg",
+    "release_date": "2017-09-06",
+    "runtime": 135,
+    "vote_average": 7.238,
+    "vote_count": 19916,
+    "popularity": 55.9228,
+    "genres": [
+      {
+        "id": 27,
+        "name": "공포"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:23.675Z",
+    "updated_at": "2025-12-24T05:27:23.675Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 48,
+  "fields": {
+    "tmdb_id": 575265,
+    "title": "미션 임파서블: 파이널 레코닝",
+    "original_title": "Mission: Impossible - The Final Reckoning",
+    "overview": "디지털상의 모든 정보를 통제할 수 있는 사상 초유의 무기로 인해 전 세계 국가와 조직의 기능이 마비되고, 인류 전체가 위협받는 절체절명의 위기가 찾아온다. 이를 막을 수 있는 건 오직 존재 자체가 기밀인 에단 헌트와 그가 소속된 IMF뿐이다. 무기를 무력화하는 데 반드시 필요한 키를 손에 쥔 에단 헌트. 오랜 동료 루터와 벤지, 그리고 새로운 팀원이 된 그레이스, 파리, 드가와 함께 지금껏 경험했던 그 어떤 상대보다도 강력한 적에 맞서 모두의 운명을 건 불가능한 미션에 뛰어든다.",
+    "poster_path": "/5Zxdorl5TharlI9S47YxoKzGCsi.jpg",
+    "backdrop_path": "/xPNDRM50a58uvv1il2GVZrtWjkZ.jpg",
+    "release_date": "2025-05-17",
+    "runtime": 170,
+    "vote_average": 7.244,
+    "vote_count": 2237,
+    "popularity": 61.1509,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:24.654Z",
+    "updated_at": "2025-12-24T05:27:24.654Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 49,
+  "fields": {
+    "tmdb_id": 1033148,
+    "title": "다이, 마이 러브",
+    "original_title": "Die My Love",
+    "overview": "외딴 시골에 사는 한 여성이 결혼과 육아로 인해 정신적으로 극한에 이르게 된다.",
+    "poster_path": "/kajpShbFhOdpl6yCrLezMrr9tB4.jpg",
+    "backdrop_path": "/dEkFlZzj2cb5F7SShvqkL54E4lr.jpg",
+    "release_date": "2025-10-06",
+    "runtime": 119,
+    "vote_average": 6.387,
+    "vote_count": 203,
+    "popularity": 51.5598,
+    "genres": [
+      {
+        "id": 18,
+        "name": "드라마"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:25.576Z",
+    "updated_at": "2025-12-24T05:27:25.576Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 50,
+  "fields": {
+    "tmdb_id": 967941,
+    "title": "위키드: 포 굿",
+    "original_title": "Wicked: For Good",
+    "overview": "전혀 다르지만 서로에게 가장 소중한 친구가 된 ‘엘파바’와 ‘글린다’. 쉬즈에서의 마법같았던 둘의 우정은 오즈의 마법사와 그를 둘러싼 비밀들을 알게 되면서 다른 길을 선택할 수밖에 없게 내몰린다. 사람들의 시선을 더 이상 두려워하지 않게 된 사악한 마녀 ‘엘파바’와 사람들의 사랑을 받으면서도 모든 걸 잃을까 두려운 착한 마녀 ‘글린다’. 서로 대척점에 서게 된 두 사람은 거대한 여정의 끝에서 운명을 영원히 바꿀 선택을 마주하게 된다.",
+    "poster_path": "/2QQHvIysfrRhOE5fpaKNlxIwUW4.jpg",
+    "backdrop_path": "/l8pwO23MCvqYumzozpxynCNfck1.jpg",
+    "release_date": "2025-11-19",
+    "runtime": 138,
+    "vote_average": 6.761,
+    "vote_count": 481,
+    "popularity": 56.3483,
+    "genres": [
+      {
+        "id": 14,
+        "name": "판타지"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 10749,
+        "name": "로맨스"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:26.522Z",
+    "updated_at": "2025-12-24T05:27:26.522Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 51,
+  "fields": {
+    "tmdb_id": 1286185,
+    "title": "목수의 아들",
+    "original_title": "The Carpenter's Son",
+    "overview": "",
+    "poster_path": "/tXEtdZjoaHqjDjSxZJWwDVjIfx9.jpg",
+    "backdrop_path": "/qFxULMQeFTdo2dcuviEdwks3CIO.jpg",
+    "release_date": "2025-11-13",
+    "runtime": 94,
+    "vote_average": 5.2,
+    "vote_count": 23,
+    "popularity": 51.9323,
+    "genres": [
+      {
+        "id": 27,
+        "name": "공포"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:27.562Z",
+    "updated_at": "2025-12-24T05:27:27.562Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 52,
+  "fields": {
+    "tmdb_id": 474350,
+    "title": "그것: 두 번째 이야기",
+    "original_title": "It Chapter Two",
+    "overview": "27년마다 아이들이 사라지는 마을 데리, 또 다시 ‘그것’이 나타났다. 27년 전, 가장 무서워하는 것의 모습으로 나타나 아이들을 잡아먹는 그것 페니와이즈에 맞섰던 ‘루저 클럽’ 친구들은 어른이 되어도 더 커져만 가는 그것의 공포를 끝내기 위해 피할 수 없는 마지막 대결에 나선다.",
+    "poster_path": "/cGevUnUmfibLL51Zj3R1oZW9adt.jpg",
+    "backdrop_path": "/8moTOzunF7p40oR5XhlDvJckOSW.jpg",
+    "release_date": "2019-09-04",
+    "runtime": 169,
+    "vote_average": 6.838,
+    "vote_count": 9329,
+    "popularity": 52.1159,
+    "genres": [
+      {
+        "id": 27,
+        "name": "공포"
+      },
+      {
+        "id": 53,
+        "name": "스릴러"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:28.512Z",
+    "updated_at": "2025-12-24T05:27:28.512Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 53,
+  "fields": {
+    "tmdb_id": 23527,
+    "title": "제1부대, 진실의 순간",
+    "original_title": "Первый отряд",
+    "overview": "1942년 구소련의 적군(赤軍)이 독일인에 맞서 저항하고 있다. 나디아는 공습으로 인한 탄환 충격에 시달리지만 곧 그녀의 새로운 재능을 발견한다. 그것은 바로 ‘진실의 순간들’을 예견할 수 있는 능력으로, 그녀는 미래의 전투에서 가장 결정적인 순간들과 조우하게 된다.",
+    "poster_path": "/mh2DUD5iHNs9VR8kxxJ8yVgZD0N.jpg",
+    "backdrop_path": "/3k1PKmzNEosWFaOR1yC9ZKIYqmm.jpg",
+    "release_date": "2009-05-13",
+    "runtime": 73,
+    "vote_average": 6.239,
+    "vote_count": 136,
+    "popularity": 49.8745,
+    "genres": [
+      {
+        "id": 14,
+        "name": "판타지"
+      },
+      {
+        "id": 16,
+        "name": "애니메이션"
+      },
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 878,
+        "name": "SF"
+      }
+    ],
+    "original_language": "ru",
+    "created_at": "2025-12-24T05:27:29.519Z",
+    "updated_at": "2025-12-24T05:27:29.519Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 54,
+  "fields": {
+    "tmdb_id": 601,
+    "title": "이티",
+    "original_title": "E.T. the Extra-Terrestrial",
+    "overview": "지구조사를 위해 우주선을 타고 지구에 온 외계인 이티는 식물 채집에 열중하다가 우주선에서 낙오되어 혼자 지구에 남게된다. 지구인들에게 쫓기던 이티는 엘리엇을 만나 그의 집에 숨는다. 엘리엇은 형 마이클, 여동생 거티와 함께 이티를 보살펴주지만 이티는 알 수 없는 병에 걸려 점점 약해져간다. 한편 이티를 추적하던 당국은 이티가 있는 곳을 알아내어 이티를 치료하며 실험용으로 관찰한다. 그러나 병이 회복되지 않아 모두 포기해버린 때에 외계인의 우주선이 보낸 전파로 인해 이티가 다시 소생하고, 엘리엇은 이티를 데리러 오는 우주선의 착륙장소에 이티를 데리고 가는데...",
+    "poster_path": "/9Kl6z0J1Hu3cFOFXNBrqqVWoNmI.jpg",
+    "backdrop_path": "/mXLVA0YL6tcXi6SJSuAh9ONXFj5.jpg",
+    "release_date": "1984-06-23",
+    "runtime": 115,
+    "vote_average": 7.512,
+    "vote_count": 11696,
+    "popularity": 42.879,
+    "genres": [
+      {
+        "id": 878,
+        "name": "SF"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 10751,
+        "name": "가족"
+      },
+      {
+        "id": 14,
+        "name": "판타지"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:30.503Z",
+    "updated_at": "2025-12-24T05:27:30.503Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 55,
+  "fields": {
+    "tmdb_id": 701387,
+    "title": "부고니아",
+    "original_title": "Bugonia",
+    "overview": "벌들은 사라지고, 지구는 병들고 있고, 인류는 고통받고 있다. 거대 바이오 기업의 물류센터 직원인 테디는 이 모든 것이 은밀하게 진행되고 있는 외계인의 지구침공 계획 때문이고, 사장 미셸이 안드로메다에서 온 외계인이라고 굳게 믿는다. 오랜 준비 끝, 함께 사는 사촌 동생 돈과 함께 결국 미셸을 납치하는데 성공한 테디. 그는 지하실에 미셸을 감금한 채 지구를 찾아온 이유와 앞으로의 음모를 캐묻지만 자신은 외계인이 아니라는 말만 반복하는 미셸. 과연 테디는 미셸에게서 원하는 답을 얻고 지구를 지킬 수 있을까?",
+    "poster_path": "/hHCuWbwZvywOTWTk1CVIRMQgnkB.jpg",
+    "backdrop_path": "/tN3pTxkQoP96wtaEahYuRVdUWb2.jpg",
+    "release_date": "2025-11-05",
+    "runtime": 119,
+    "vote_average": 7.434,
+    "vote_count": 901,
+    "popularity": 51.9275,
+    "genres": [
+      {
+        "id": 878,
+        "name": "SF"
+      },
+      {
+        "id": 80,
+        "name": "범죄"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:31.442Z",
+    "updated_at": "2025-12-24T05:27:31.442Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 56,
+  "fields": {
+    "tmdb_id": 991494,
+    "title": "스폰지밥 무비: 네모바지를 찾아서",
+    "original_title": "The SpongeBob Movie: Search for SquarePants",
+    "overview": "비키니시티에 사는 스폰지밥은 무시무시한 롤러코스터를 탈 수 있는 용감한 ‘빅 가이’가 꿈이다. 그러던 어느 날, 미지의 세계 ‘언더월드’에 사는 유령선장을 만나 ‘용감무쌍짱 증명서’를 받으면 진정한 ‘빅 가이’가 될 수 있다는 말을 들은 스폰지밥은 절친 뚱이와 함께 해적선을 찾아 위험천만한 모험을 떠난다. 그 사실을 안 집게사장과 징징이, 핑핑이는 스폰지밥을 구하기 위해 따라나서는데…",
+    "poster_path": "/2QCGC4toQXYuIsWKj5vJQRAdPjd.jpg",
+    "backdrop_path": "/kVSUUWiXoNwq2wVCZ4Mcqkniqvr.jpg",
+    "release_date": "2026-01-01",
+    "runtime": 96,
+    "vote_average": 7.071,
+    "vote_count": 14,
+    "popularity": 53.6244,
+    "genres": [
+      {
+        "id": 10751,
+        "name": "가족"
+      },
+      {
+        "id": 35,
+        "name": "코미디"
+      },
+      {
+        "id": 12,
+        "name": "모험"
+      },
+      {
+        "id": 16,
+        "name": "애니메이션"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:32.396Z",
+    "updated_at": "2025-12-24T05:27:32.396Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 57,
+  "fields": {
+    "tmdb_id": 8871,
+    "title": "그린치",
+    "original_title": "How the Grinch Stole Christmas",
+    "overview": "어느 북쪽 마을인 후빌(Whoville) 사람들은 온통 크리스마스에 대한 기대에 들떠있다. 크럼피트 산의 꼭대기에 위치한 동굴속에 사는 심술궂은 그린치(짐 캐리 분)는 이러한 사람들을 내려다 보다가 올 크리스마스에는 자신도 마음껏 즐길 수 있는 계획을 세운다. 이 계획이란 바로 크리스마스를 엉망으로 만들어 마을 사람들로부터 즐거운 크리스마스를 빼앗는 것.  변장한 채 후빌 마을로 내려온 그린치는 도중에 어린 신디 루 후(테일러 맘슨 분)와 마주치는데 그녀는 사람들이 쇼핑에만 열중하는 모습을 보면서 진정한 크리스마스의 의미가 무엇일까하는 고민에 빠진 소녀이다. 약간 멍청한 우체국장인 아빠 루(빌 어윈 분)와 후빌 마을의 경쟁자인 마사 메이 우비어(크리스틴 바란스키 분)를 앞설 생각뿐인 엄마 베티(몰리 새논 분) 모두 신디의 궁금증 해결에는 도움을 주지 못한다. 이제 그녀는 스스로 자신의 궁금증을 해결하기로 결심하는데 우선 그린치가 누구이고, 그가 왜 크리스마스를 싫어하는지 밝히려 애쓴다. 일련의 소동 끝에 그린치와 신디는 서로를 통하여 크리스마스의 진정한 의미를 깨닫게 된다.",
+    "poster_path": "/gqkJSh8pqMdiWwPfRNJGQkuivDi.jpg",
+    "backdrop_path": "/sy0vo1cmpKqwPRiMUiJ45jyLsX7.jpg",
+    "release_date": "2000-12-16",
+    "runtime": 105,
+    "vote_average": 6.8,
+    "vote_count": 8020,
+    "popularity": 56.4803,
+    "genres": [
+      {
+        "id": 10751,
+        "name": "가족"
+      },
+      {
+        "id": 35,
+        "name": "코미디"
+      },
+      {
+        "id": 14,
+        "name": "판타지"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:33.437Z",
+    "updated_at": "2025-12-24T05:27:33.437Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 58,
+  "fields": {
+    "tmdb_id": 1523145,
+    "title": "Твое сердце будет разбито",
+    "original_title": "Твое сердце будет разбито",
+    "overview": "",
+    "poster_path": "/naOC89qeEygU44xM9EIot1m5AUQ.jpg",
+    "backdrop_path": null,
+    "release_date": "2026-03-05",
+    "runtime": 0,
+    "vote_average": 0.0,
+    "vote_count": 0,
+    "popularity": 44.7621,
+    "genres": [
+      {
+        "id": 10749,
+        "name": "로맨스"
+      }
+    ],
+    "original_language": "ru",
+    "created_at": "2025-12-24T05:27:34.414Z",
+    "updated_at": "2025-12-24T05:27:34.414Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 59,
+  "fields": {
+    "tmdb_id": 1363123,
+    "title": "'패밀리 플랜 2' - The Family Plan 2",
+    "original_title": "The Family Plan 2",
+    "overview": "킬러 시절을 뒤로한 댄은 크리스마스에 아이들과 오붓한 시간을 보내고 싶어 한다. 하지만 딸이 따로 계획을 세운 걸 알고, 런던행 가족 여행을 예약해 버린다. 그 결정으로 댄과 가족들은 예상치 못한 적의 표적이 된다.",
+    "poster_path": "/leWNzgtVJwwpukdYdu8aerQFvjP.jpg",
+    "backdrop_path": "/7nAVXGHHtaNcdsqvDXmY6R9N0fG.jpg",
+    "release_date": "2025-11-21",
+    "runtime": 106,
+    "vote_average": 6.64,
+    "vote_count": 381,
+    "popularity": 47.8797,
+    "genres": [
+      {
+        "id": 28,
+        "name": "액션"
+      },
+      {
+        "id": 35,
+        "name": "코미디"
+      }
+    ],
+    "original_language": "en",
+    "created_at": "2025-12-24T05:27:35.388Z",
+    "updated_at": "2025-12-24T05:27:35.388Z"
+  }
+},
+{
+  "model": "movies.movie",
+  "pk": 60,
+  "fields": {
+    "tmdb_id": 1400032,
+    "title": "텐댄스",
+    "original_title": "10DANCE",
+    "overview": "모든 면에서 정반대인 두 명의 댄서가 궁극의 댄스 대회에 도전하기 위해 함께 연습하기로 한다. 처음부터 격렬하게 충돌하는 두 사람. 하지만 곧 서로를 향해 마음이 움직이기 시작한다.",
+    "poster_path": "/zLZQJS0lSTGnBBo8Eq5im4qeSXr.jpg",
+    "backdrop_path": "/hsuT5b5EcDAVCY3Oe0Iyez2lTES.jpg",
+    "release_date": "2025-12-18",
+    "runtime": 128,
+    "vote_average": 6.864,
+    "vote_count": 33,
+    "popularity": 48.3943,
+    "genres": [
+      {
+        "id": 10749,
+        "name": "로맨스"
+      },
+      {
+        "id": 18,
+        "name": "드라마"
+      }
+    ],
+    "original_language": "ja",
+    "created_at": "2025-12-24T05:27:36.375Z",
+    "updated_at": "2025-12-24T05:27:36.375Z"
+  }
+}
+]
