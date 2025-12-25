@@ -102,7 +102,7 @@ const signup = async () => {
     <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
 
     <!-- 성공 메시지 -->
-    <p v-if="successMessage" class="success-message">{{ successMessage }}</p>  <!-- 성공 메시지 추가 -->
+    <p v-if="successMessage" class="success-message">{{ successMessage }}</p> 
   </div>
 </template>
 

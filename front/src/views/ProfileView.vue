@@ -41,7 +41,7 @@ const favoriteMovies = ref([])
 const favoriteMoviesDetails = ref([])
 const isLoadingFavorites = ref(false)
 
-// 찜한 영화 기반 추천 데이터 (추가됨)
+// 찜한 영화 기반 추천 데이터 
 const favoriteBasedRecommendations = ref([])
 const isLoadingRecommendations = ref(false)
 

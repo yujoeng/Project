@@ -1,7 +1,7 @@
 vue<script setup>
 import { ref, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/authStore'
-import { getComments, createComment, updateComment, deleteComment } from '@/api/community'  // 👈 추가
+import { getComments, createComment, updateComment, deleteComment } from '@/api/community'  
 
 const props = defineProps({
   reviewId: {
@@ -17,7 +17,7 @@ const newComment = ref('')
 const isLoading = ref(false)
 const isSubmitting = ref(false)
 
-// 👇 수정 중인 댓글 관리
+// 수정 중인 댓글 관리
 const editingCommentId = ref(null)
 const editingContent = ref('')
 
@@ -54,19 +54,19 @@ const handleSubmit = async () => {
   }
 }
 
-// 👇 수정 모드 시작
+// 수정 모드 시작
 const startEdit = (comment) => {
   editingCommentId.value = comment.id
   editingContent.value = comment.content
 }
 
-// 👇 수정 취소
+// 수정 취소
 const cancelEdit = () => {
   editingCommentId.value = null
   editingContent.value = ''
 }
 
-// 👇 댓글 수정
+// 댓글 수정
 const handleUpdate = async (commentId) => {
   if (!editingContent.value.trim()) {
     alert('댓글 내용을 입력해주세요.')
@@ -85,7 +85,7 @@ const handleUpdate = async (commentId) => {
   }
 }
 
-// 👇 댓글 삭제
+// 댓글 삭제
 const handleDelete = async (commentId) => {
   if (!confirm('정말 이 댓글을 삭제하시겠습니까?')) {
     return
@@ -101,7 +101,7 @@ const handleDelete = async (commentId) => {
   }
 }
 
-// 👇 수정/삭제 권한 확인
+// 수정/삭제 권한 확인
 const canEdit = (comment) => {
   return authStore.isLogin && authStore.username === comment.username
 }
@@ -149,7 +149,7 @@ onMounted(() => {
                 {{ new Date(comment.created_at).toLocaleDateString('ko-KR') }}
               </span>
               
-              <!-- 👇 수정/삭제 버튼 추가 -->
+
               <div v-if="canEdit(comment) || canDelete(comment)" class="comment-actions">
                 <button 
                   v-if="canEdit(comment)" 
@@ -173,7 +173,6 @@ onMounted(() => {
           <p class="comment-text">{{ comment.content }}</p>
         </div>
 
-        <!-- 👇 수정 모드일 때 -->
         <div v-else class="comment-edit-mode">
           <textarea
             v-model="editingContent"
@@ -340,7 +339,6 @@ onMounted(() => {
   color: var(--text-muted);
 }
 
-/* 👇 댓글 수정/삭제 버튼 */
 .comment-actions {
   display: flex;
   gap: var(--spacing-xs);
@@ -376,7 +374,6 @@ onMounted(() => {
   word-break: break-word;
 }
 
-/* 👇 댓글 수정 모드 */
 .comment-edit-mode {
   display: flex;
   flex-direction: column;

@@ -56,7 +56,7 @@ export const updateComment = (commentId, content) => {
   return apiClient.put(`/community/comments/${commentId}/update/`, { content })
 }
 
-/**
+/*
  * 댓글 삭제
  */
 export const deleteComment = (commentId) => {

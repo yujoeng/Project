@@ -14,7 +14,7 @@ import SignupView from '@/views/SignupView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import EmotionSelectView from '../views/EmotionSelectView.vue'
 
-//로그인이 필요한 경우에는 뒤에 meta:{ requiresAuth: true },  추가하기
+//로그인이 필요한 경우에는 뒤에 meta:{ requiresAuth: true },  
 const routes = [
   { path: '/', name: 'home', component: HomeView },
     { path: '/emotions', name: 'emotions', component: EmotionSelectView },

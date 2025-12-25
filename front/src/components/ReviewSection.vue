@@ -92,7 +92,7 @@ const handleSubmitReview = async () => {
   }
 }
 
-// 👇 리뷰 새로고침 핸들러 추가 (중요!)
+
 const handleRefresh = async () => {
   await fetchReviews()
 }
@@ -239,7 +239,6 @@ onMounted(() => {
       </div>
 
       <!-- 리뷰 목록 -->
-      <!-- 👇 @refresh 이벤트 핸들러 추가 (중요!) -->
       <ReviewItem 
         v-else
         v-for="review in reviews" 

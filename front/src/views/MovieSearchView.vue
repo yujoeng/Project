@@ -65,7 +65,6 @@ onMounted(() => {
 
 <template>
    <div class="search-result-view">
-    <!-- 👇 추가: 검색 폼 -->
     <div v-if="showSearchForm" class="search-form-container">
       <h1>영화 검색</h1>
       <form @submit.prevent="handleSearch" class="search-form">
@@ -83,14 +82,12 @@ onMounted(() => {
       <p class="search-hint">영화 제목으로 검색해보세요</p>
     </div>
 
-    <!-- 👇 기존: 검색 결과 -->
     <div v-else>
       <!-- 검색어 다시 입력 -->
       <div class="search-header">
         <h1>"{{ searchQuery }}" 검색 결과</h1>
         <p v-if="!isLoading && !errorMessage">{{ movies.length }}개의 영화를 찾았습니다</p>
         
-        <!-- 👇 추가: 다시 검색하기 -->
         <form @submit.prevent="handleSearch" class="search-form-inline">
           <input
             v-model="searchQuery"
@@ -152,7 +149,6 @@ onMounted(() => {
   color: white;
 }
 
-/* 👇 추가: 검색 폼 스타일 */
 .search-form-container {
   max-width: 800px;
   margin: 0 auto;
@@ -242,7 +238,6 @@ onMounted(() => {
   margin-bottom: 20px;
 }
 
-/* 👇 추가: 인라인 검색 폼 */
 .search-form-inline {
   display: flex;
   gap: 8px;
@@ -322,7 +317,7 @@ onMounted(() => {
   overflow: hidden;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid transparent;
-  width: 100%;  /* 👈 추가 */
+  width: 100%;  
   max-width: 250px; 
 }
 

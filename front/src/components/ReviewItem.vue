@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useAuthStore } from '@/stores/authStore'
-import { toggleReviewLike, updateReview, deleteReview } from '@/api/community'  // 👈 추가
+import { toggleReviewLike, updateReview, deleteReview } from '@/api/community'  
 import CommentSection from './CommentSection.vue'
 import { getEmotionEmoji, getEmotionLabel } from '@/utils/emotions'
 
@@ -19,7 +19,7 @@ const authStore = useAuthStore()
 const showComments = ref(false)
 const isLiking = ref(false)
 
-// 👇 수정 모드 추가
+
 const isEditing = ref(false)
 const editForm = ref({
   title: props.review.title,
@@ -43,7 +43,7 @@ const hasEmotions = computed(() => {
   return props.review.emotion_tags && props.review.emotion_tags.length > 0
 })
 
-// 👇 수정/삭제 권한 확인
+// 수정/삭제 권한 확인
 const canEdit = computed(() => {
   return authStore.isLogin && authStore.username === props.review.username
 })
@@ -74,16 +74,13 @@ const handleLike = async () => {
   }
 }
 
-// 댓글 토글
 const toggleComments = () => {
   showComments.value = !showComments.value
 }
 
-// 👇 수정 모드 토글
 const toggleEdit = () => {
   isEditing.value = !isEditing.value
   if (isEditing.value) {
-    // 수정 모드 진입 시 현재 값으로 초기화
     editForm.value = {
       title: props.review.title,
       content: props.review.content,
@@ -93,7 +90,6 @@ const toggleEdit = () => {
   }
 }
 
-// 👇 리뷰 수정
 const handleUpdate = async () => {
   if (!editForm.value.title.trim()) {
     alert('제목을 입력해주세요.')
@@ -115,7 +111,6 @@ const handleUpdate = async () => {
   }
 }
 
-// 👇 리뷰 삭제
 const handleDelete = async () => {
   if (!confirm('정말 이 리뷰를 삭제하시겠습니까?')) {
     return
@@ -146,7 +141,7 @@ const handleDelete = async () => {
         <div class="header-right">
           <span class="review-date">{{ new Date(review.created_at).toLocaleDateString('ko-KR') }}</span>
           
-          <!-- 👇 수정/삭제 버튼 추가 -->
+
           <div v-if="canEdit || canDelete" class="action-buttons">
             <button v-if="canEdit" @click="toggleEdit" class="btn-edit" title="수정">
               ✏️
@@ -170,7 +165,6 @@ const handleDelete = async () => {
         </span>
       </div>
 
-      <!-- 리뷰 제목 -->
       <h3 class="review-title">{{ review.title }}</h3>
 
       <!-- 리뷰 내용 -->
@@ -199,7 +193,6 @@ const handleDelete = async () => {
       </div>
     </div>
 
-    <!-- 👇 수정 모드일 때 -->
     <div v-else class="edit-mode">
       <h3 class="edit-title">리뷰 수정</h3>
       
@@ -289,7 +282,7 @@ const handleDelete = async () => {
   gap: var(--spacing-sm);
 }
 
-/* 👇 헤더 오른쪽 영역 추가 */
+
 .header-right {
   display: flex;
   align-items: center;
@@ -316,7 +309,7 @@ const handleDelete = async () => {
   color: var(--text-muted);
 }
 
-/* 👇 수정/삭제 버튼 스타일 추가 */
+
 .action-buttons {
   display: flex;
   gap: var(--spacing-xs);
@@ -458,7 +451,7 @@ const handleDelete = async () => {
   opacity: 0.5;
 }
 
-/* 👇 수정 모드 스타일 추가 */
+
 .edit-mode {
   padding: var(--spacing-md);
   background: var(--bg-dark-secondary);

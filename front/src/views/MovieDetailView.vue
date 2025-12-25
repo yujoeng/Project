@@ -461,10 +461,10 @@ onMounted(() => {
 
 /* 뒤로가기 버튼 - 왼쪽 상단 고정 */
 .btn-back-hero {
-  position: absolute;  /* 👈 fixed에서 absolute로 변경 */
-  top: -60px;  /* 👈 포스터 위쪽 */
+  position: absolute;  /*  fixed에서 absolute로 변경 */
+  top: -60px;  
   left: 0;
-  z-index: 10;  /* 👈 1000에서 10으로 변경 */
+  z-index: 10; 
   
   background: rgba(15, 10, 26, 0.9);
   backdrop-filter: blur(10px);

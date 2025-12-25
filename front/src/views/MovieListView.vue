@@ -30,7 +30,7 @@ const emotionOptions = [
 
 const isEmotionBased = computed(() => !!route.query.emotion)
 const emotionName = computed(() => route.query.emotionName || '')
-const emotionTagline = computed(() => route.query.emotionTagline || '')  // // 디버깅용 추가
+const emotionTagline = computed(() => route.query.emotionTagline || '')  // 디버깅용
 const displayGenres = computed(() => {
   if (route.query.genres) {
     return route.query.genres.replace(/,/g, ' · ')
@@ -74,7 +74,7 @@ const loadMovies = async () => {
 
     console.log('// 디버깅용 최종 영화 개수:', movies.value.length)
   } catch (error) {
-    console.error('❌ 영화 로딩 실패:', error)
+    console.error(' 영화 로딩 실패:', error)
     errorMessage.value = '영화 정보를 가져오는데 실패했습니다.'
   } finally {
     isLoading.value = false
@@ -104,9 +104,9 @@ const loadMoviesByEmotion = async () => {
     })
 
     movies.value = response.data.results || []
-    console.log('✅ 감정별 정렬 완료:', response.data)
+    console.log(' 감정별 정렬 완료:', response.data)
   } catch (error) {
-    console.error('❌ 감정별 정렬 실패:', error)
+    console.error(' 감정별 정렬 실패:', error)
     errorMessage.value = '감정별 영화 정렬에 실패했습니다.'
     movies.value = []
   } finally {

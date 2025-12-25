@@ -112,7 +112,7 @@ const createShootingStars = () => {
   position: relative;
   overflow-x: hidden;
   
-  /* 👇 수정: 전체 너비 강제 */
+  /* 전체 너비 강제 */
   width: 100vw;
   max-width: 100vw;
   margin: 0;
